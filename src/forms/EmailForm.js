@@ -26,12 +26,16 @@ const EmailForm = ({buttonText, onSubmit, children, onAuthentication}) => {
         style={styles.input}
         onChangeText={(text) => onChangeEmail(text)}
         value={email}
+        placeholder="Email"
+        placeholderTextColor="grey"
         keyboardType="email-address"
       />
       <TextInput
         style={styles.input}
         onChangeText={(text) => onChangePassword(text)}
         value={password}
+        placeholder="Password"
+        placeholderTextColor="grey"
         secureTextEntry
       />
       <Button title={buttonText} onPress={submit} />
