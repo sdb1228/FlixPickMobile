@@ -1,22 +1,28 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, SafeAreaView, FlatList, StyleSheet, StatusBar } from 'react-native';
 import { getUsers } from '../api/mocks';
 import { setToken } from '../api/token';
 
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
+
 export default class HomeScreen extends React.Component {
-  componentDidMount() {
-    this.didFocusSubscription = this.props.navigation.addListener(
-      'didFocus',
-      () => {
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isFocused !== this.props.isFocused) {
         if (!this.state.hasLoadedUsers) {
           this.loadUsers();
         }
-      },
-    );
+    }
   }
 
-  componentWillUnmount() {
-    this.didFocusSubscription.remove();
+  componentDidMount() {
+    if (!this.state.hasLoadedUsers) {
+      this.loadUsers();
+    }
   }
 
   state = { users: [], hasLoadedUsers: false, userLoadingErrorMessage: '' };
@@ -44,25 +50,54 @@ export default class HomeScreen extends React.Component {
     }
   }
 
-  logOut = async () => {
-    this.setState({ hasLoadedUsers: false, users: [] })
-    await setToken('');
-    this.props.navigation.navigate('Login');
-  };
+  // logOut = async () => {
+    // this.setState({ hasLoadedUsers: false, users: [] })
+    // await setToken('');
+    // this.props.navigation.navigate('Login');
+        // <Button title="Log out" onPress={this.logOut} />
+  // };
+  //
+      // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        // <Text>HomeScreen</Text>
+        // {users.map((user) => (
+          // <Text key={user.email}>{user.email}</Text>
+        // ))}
+        // {userLoadingErrorMessage ? (
+          // <Text>{userLoadingErrorMessage}</Text>
+        // ) : null}
+      // </View>
+  //
+
+  renderItem = ({ item }) => (
+    <Item title={item.email} />
+  );
 
   render() {
     const { users, userLoadingErrorMessage } = this.state;
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>HomeScreen</Text>
-        {users.map((user) => (
-          <Text key={user.email}>{user.email}</Text>
-        ))}
-        {userLoadingErrorMessage ? (
-          <Text>{userLoadingErrorMessage}</Text>
-        ) : null}
-        <Button title="Log out" onPress={this.logOut} />
-      </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={users}
+        renderItem={this.renderItem}
+        keyExtractor={item => item.id}
+      />
+    </SafeAreaView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
+});
