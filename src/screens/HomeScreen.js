@@ -89,7 +89,7 @@ export default class HomeScreen extends React.Component {
         <ActionButton
           buttonColor="rgba(231,76,60,1)"
           onPress={() => {
-            console.log('hi');
+            this.props.navigation.navigate('CreateRecreation');
           }}
         />
       </SafeAreaView>

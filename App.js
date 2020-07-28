@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import CreateAccountScreen from './src/screens/CreateAccountScreen';
+import CreateRecreation from './src/screens/CreateRecreation';
 
 const Stack = createStackNavigator();
 
@@ -14,7 +15,7 @@ function MyStack() {
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         options={{
-          title: 'My home',
+          title: 'Home',
           headerLeft: () => (
             <Icon
               onPress={() => alert('This search')}
@@ -39,6 +40,13 @@ function MyStack() {
       />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+      <Stack.Screen
+        options={{
+          title: 'Create Recreation',
+        }}
+        name="CreateRecreation"
+        component={CreateRecreation}
+      />
     </Stack.Navigator>
   );
 }
