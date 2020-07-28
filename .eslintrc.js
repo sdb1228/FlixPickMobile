@@ -1,26 +1,22 @@
 module.exports = {
   env: {
     browser: true,
-    es2020: true
+    es2020: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'standard',
-    'prettier'
-  ],
+  extends: ['plugin:react/recommended', 'standard', 'prettier'],
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 11,
-    sourceType: 'module'
+    sourceType: 'module',
   },
-  plugins: [
-    'react',
-    'prettier'
-  ],
+  plugins: ['react', 'react-native', 'prettier'],
+
   rules: {
     'react/prop-types': 0,
-    'prettier/prettier': ['error']
-  }
-}
+    'prettier/prettier': ['error'],
+    'react/display-name': 'off',
+  },
+};

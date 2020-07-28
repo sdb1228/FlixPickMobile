@@ -1,7 +1,8 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {Button} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/Ionicons';
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import CreateAccountScreen from './src/screens/CreateAccountScreen';
@@ -15,17 +16,21 @@ function MyStack() {
         options={{
           title: 'My home',
           headerLeft: () => (
-            <Button
-              onPress={() => alert('This goes to search')}
-              title="Search"
-              color="#000"
+            <Icon
+              onPress={() => alert('This search')}
+              name="search-outline"
+              size={35}
+              color="black"
+              style={styles.searchIcon}
             />
           ),
           headerRight: () => (
-            <Button
+            <Icon
               onPress={() => alert('This goes to User Settings')}
-              title="Settings"
-              color="#000"
+              name="settings-outline"
+              size={35}
+              color="black"
+              style={styles.settingsIcon}
             />
           ),
         }}
@@ -45,3 +50,12 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  searchIcon: {
+    marginLeft: 20,
+  },
+  settingsIcon: {
+    marginRight: 20,
+  },
+});
