@@ -12,33 +12,33 @@ import {
 } from 'react-native';
 import {createAccount} from '../api/mocks';
 import {setToken} from '../api/token';
-import ImagePicker from 'react-native-image-picker';
+// import ImagePicker from 'react-native-image-picker';
 
 const CreateRecreation = ({navigation}) => {
-  const chooseImage = () => {
-    const options = {
-      title: 'Select Avatar',
-      cameraType: 'front',
-      mediaType: 'photo',
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
-    };
-    ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-        alert(response.customButton);
-      } else {
-        SetFileuri(response.uri); // update state to update Image
-      }
-    });
-  };
+  // const chooseImage = () => {
+    // const options = {
+      // title: 'Select Avatar',
+      // cameraType: 'front',
+      // mediaType: 'photo',
+      // storageOptions: {
+        // skipBackup: true,
+        // path: 'images',
+      // },
+    // };
+    // ImagePicker.showImagePicker(options, (response) => {
+      // console.log('Response = ', response);
+      // if (response.didCancel) {
+        // console.log('User cancelled image picker');
+      // } else if (response.error) {
+        // console.log('ImagePicker Error: ', response.error);
+      // } else if (response.customButton) {
+        // console.log('User tapped custom button: ', response.customButton);
+        // alert(response.customButton);
+      // } else {
+        // SetFileuri(response.uri); // update state to update Image
+      // }
+    // });
+  // };
   const [firstName, onChangeFirstName] = useState('');
   const [lastName, onChangeLastName] = useState('');
   const [email, onChangeEmail] = useState('');
@@ -61,23 +61,6 @@ const CreateRecreation = ({navigation}) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View
-        style={{
-          alignSelf: 'center',
-          marginTop: 35,
-        }}>
-        <Image
-          style={{height: 100, width: 100, borderRadius: 50}}
-          source={
-            fileUri
-              ? {uri: fileUri} // if clicked a new img
-              : require('images/bg.jpg')
-          } // else show random
-        />
-        <TouchableOpacity style={styles.addPictureIcon} onPress={chooseImage}>
-          <Icon name="camera" size={20} />
-        </TouchableOpacity>
-      </View>
       <TextInput
         style={styles.input}
         onChangeText={(text) => onChangeFirstName(text)}
