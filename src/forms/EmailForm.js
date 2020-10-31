@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, TextInput, Button, Text} from 'react-native';
-import {setToken} from '../api/token';
 
 const EmailForm = ({buttonText, onSubmit, children, onAuthentication}) => {
   const [email, onChangeEmail] = useState('');
@@ -9,13 +8,10 @@ const EmailForm = ({buttonText, onSubmit, children, onAuthentication}) => {
 
   const submit = () => {
     onSubmit(email, password)
-      .then(async (res) => {
-        console.log(res.data.auth_token);
-        await setToken(res.data.auth_token);
+      .then(async () => {
         onAuthentication();
       })
       .catch((res) => {
-        console.log(res);
         setErrorMessage(res.data.error);
       });
   };

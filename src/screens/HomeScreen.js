@@ -1,13 +1,8 @@
 import React from 'react';
-import {View, Text, SafeAreaView, StyleSheet, StatusBar} from 'react-native';
+import {View, SafeAreaView, StyleSheet, StatusBar} from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 import {getHome} from '../api/mocks';
-
-const Item = ({title}) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+import TinderCard from './TinderCard';
 
 export default class HomeScreen extends React.Component {
   componentDidUpdate(prevProps) {
@@ -67,8 +62,6 @@ export default class HomeScreen extends React.Component {
   // </View>
   //
 
-  renderItem = ({item}) => <Item title={item.title} />;
-
   render() {
     const {movies} = this.state;
     return (
@@ -77,13 +70,8 @@ export default class HomeScreen extends React.Component {
           <Swiper
             cards={movies || []}
             renderCard={(card) => {
-              return (
-                <View style={styles.card}>
-                  <Text style={styles.text}>
-                    {!card ? 'Welcome to Flix Picks!' : card.title}
-                  </Text>
-                </View>
-              );
+              console.log(card);
+              return <TinderCard {...card} />;
             }}
             onSwiped={(cardIndex) => {
               console.log(cardIndex);
