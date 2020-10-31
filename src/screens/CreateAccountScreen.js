@@ -4,8 +4,7 @@ import {createAccount} from '../api/mocks';
 import {setToken} from '../api/token';
 
 const CreateAccount = ({navigation}) => {
-  const [firstName, onChangeFirstName] = useState('');
-  const [lastName, onChangeLastName] = useState('');
+  const [displayName, onChangeDisplayName] = useState('');
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -27,17 +26,10 @@ const CreateAccount = ({navigation}) => {
     <ScrollView contentContainerStyle={styles.container}>
       <TextInput
         style={styles.input}
-        onChangeText={(text) => onChangeFirstName(text)}
-        placeholder="First Name"
+        onChangeText={(text) => onChangeDisplayName(text)}
+        placeholder="Display Name"
         placeholderTextColor="grey"
-        value={firstName}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={(text) => onChangeLastName(text)}
-        placeholder="Last Name"
-        placeholderTextColor="grey"
-        value={lastName}
+        value={displayName}
       />
       <TextInput
         style={styles.input}

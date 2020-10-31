@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* RentACourtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RentACourtTests.m */; };
+		00E356F31AD99517003FC87E /* FlixPickTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FlixPickTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		16BFD40AC5016CB9B8781EF0 /* libPods-RentACourt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F5A98C5430AA0124858E7F /* libPods-RentACourt.a */; };
-		1715F3F15748728978DF1FF9 /* libPods-RentACourt-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F82DB2A711FF1742E99170 /* libPods-RentACourt-tvOS.a */; };
+		16BFD40AC5016CB9B8781EF0 /* libPods-FlixPick.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F5A98C5430AA0124858E7F /* libPods-FlixPick.a */; };
+		1715F3F15748728978DF1FF9 /* libPods-FlixPick-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F82DB2A711FF1742E99170 /* libPods-FlixPick-tvOS.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* RentACourtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RentACourtTests.m */; };
-		7E78F7CCCD18435B73407504 /* libPods-RentACourt-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5239CD7F34402D0BFB677016 /* libPods-RentACourt-tvOSTests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* FlixPickTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FlixPickTests.m */; };
+		7E78F7CCCD18435B73407504 /* libPods-FlixPick-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5239CD7F34402D0BFB677016 /* libPods-FlixPick-tvOSTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		AA908287A66E21B6604EB306 /* libPods-RentACourt-RentACourtTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 560D42C8F169767D2C94BCA9 /* libPods-RentACourt-RentACourtTests.a */; };
+		AA908287A66E21B6604EB306 /* libPods-FlixPick-FlixPickTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 560D42C8F169767D2C94BCA9 /* libPods-FlixPick-FlixPickTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,61 +28,61 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = RentACourt;
+			remoteInfo = FlixPick;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "RentACourt-tvOS";
+			remoteInfo = "FlixPick-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* RentACourtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RentACourtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* FlixPickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlixPickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* RentACourtTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RentACourtTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* FlixPickTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlixPickTests.m; sourceTree = "<group>"; };
 		0450A625BFC54355A3D808F7 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		0665D7B6EED1D650D2BAE446 /* Pods-RentACourt-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentACourt-tvOS.release.xcconfig"; path = "Target Support Files/Pods-RentACourt-tvOS/Pods-RentACourt-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		0665D7B6EED1D650D2BAE446 /* Pods-FlixPick-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixPick-tvOS.release.xcconfig"; path = "Target Support Files/Pods-FlixPick-tvOS/Pods-FlixPick-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		09153E3358B646E38D29E13F /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		0F170AE419E443148CB0229E /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* RentACourt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RentACourt.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RentACourt/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RentACourt/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RentACourt/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RentACourt/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RentACourt/main.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* FlixPick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlixPick.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FlixPick/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = FlixPick/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FlixPick/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FlixPick/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FlixPick/main.m; sourceTree = "<group>"; };
 		1BB6DB0737DD45F085E3C493 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		1ED52D4BAE69456EB4E0F4AF /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		26F82DB2A711FF1742E99170 /* libPods-RentACourt-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RentACourt-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E47B1E0B4A5D006451C7 /* RentACourt-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RentACourt-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* RentACourt-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RentACourt-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EEB41752FA2F6775D9196A2 /* Pods-RentACourt-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentACourt-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-RentACourt-tvOSTests/Pods-RentACourt-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		31E970B7A8B9D9E12BF91B7E /* Pods-RentACourt-RentACourtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentACourt-RentACourtTests.release.xcconfig"; path = "Target Support Files/Pods-RentACourt-RentACourtTests/Pods-RentACourt-RentACourtTests.release.xcconfig"; sourceTree = "<group>"; };
-		31F5A98C5430AA0124858E7F /* libPods-RentACourt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RentACourt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		26F82DB2A711FF1742E99170 /* libPods-FlixPick-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlixPick-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* FlixPick-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlixPick-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* FlixPick-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FlixPick-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EEB41752FA2F6775D9196A2 /* Pods-FlixPick-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixPick-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-FlixPick-tvOSTests/Pods-FlixPick-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		31E970B7A8B9D9E12BF91B7E /* Pods-FlixPick-FlixPickTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixPick-FlixPickTests.release.xcconfig"; path = "Target Support Files/Pods-FlixPick-FlixPickTests/Pods-FlixPick-FlixPickTests.release.xcconfig"; sourceTree = "<group>"; };
+		31F5A98C5430AA0124858E7F /* libPods-FlixPick.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlixPick.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E762D6DFAF745F1AA6D3641 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		5239CD7F34402D0BFB677016 /* libPods-RentACourt-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RentACourt-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		560D42C8F169767D2C94BCA9 /* libPods-RentACourt-RentACourtTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RentACourt-RentACourtTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5239CD7F34402D0BFB677016 /* libPods-FlixPick-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlixPick-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		560D42C8F169767D2C94BCA9 /* libPods-FlixPick-FlixPickTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlixPick-FlixPickTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69451906883642EF86977843 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		73D19BB529504D629712AE9E /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		7427DDE7EE9B4973891B8C9C /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		761F1D56DA3D46B291C8A178 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		7A703F0395084E40BD9C4ABB /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RentACourt/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FlixPick/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		837DC76104884525A27C7D81 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		A3F49DAF646F47A79C85BC5E /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		A67B0F28BE29EFF18BFACC7B /* Pods-RentACourt-RentACourtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentACourt-RentACourtTests.debug.xcconfig"; path = "Target Support Files/Pods-RentACourt-RentACourtTests/Pods-RentACourt-RentACourtTests.debug.xcconfig"; sourceTree = "<group>"; };
-		BF75075D9B3692A73FF19BB7 /* Pods-RentACourt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentACourt.debug.xcconfig"; path = "Target Support Files/Pods-RentACourt/Pods-RentACourt.debug.xcconfig"; sourceTree = "<group>"; };
+		A67B0F28BE29EFF18BFACC7B /* Pods-FlixPick-FlixPickTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixPick-FlixPickTests.debug.xcconfig"; path = "Target Support Files/Pods-FlixPick-FlixPickTests/Pods-FlixPick-FlixPickTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BF75075D9B3692A73FF19BB7 /* Pods-FlixPick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixPick.debug.xcconfig"; path = "Target Support Files/Pods-FlixPick/Pods-FlixPick.debug.xcconfig"; sourceTree = "<group>"; };
 		CB5D3DC65A724C26AA764B83 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		CB90179B97F049C79FF0C50D /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		D12E65ECF4AD4ECA97D859CE /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		D3B187A4B64F245E695BAD20 /* Pods-RentACourt-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentACourt-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-RentACourt-tvOS/Pods-RentACourt-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		E2579A6993CA51EB51A494FA /* Pods-RentACourt-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentACourt-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-RentACourt-tvOSTests/Pods-RentACourt-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D3B187A4B64F245E695BAD20 /* Pods-FlixPick-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixPick-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-FlixPick-tvOS/Pods-FlixPick-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E2579A6993CA51EB51A494FA /* Pods-FlixPick-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixPick-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-FlixPick-tvOSTests/Pods-FlixPick-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F2F007CDE14B2A7B78F39810 /* Pods-RentACourt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentACourt.release.xcconfig"; path = "Target Support Files/Pods-RentACourt/Pods-RentACourt.release.xcconfig"; sourceTree = "<group>"; };
+		F2F007CDE14B2A7B78F39810 /* Pods-FlixPick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixPick.release.xcconfig"; path = "Target Support Files/Pods-FlixPick/Pods-FlixPick.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA908287A66E21B6604EB306 /* libPods-RentACourt-RentACourtTests.a in Frameworks */,
+				AA908287A66E21B6604EB306 /* libPods-FlixPick-FlixPickTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16BFD40AC5016CB9B8781EF0 /* libPods-RentACourt.a in Frameworks */,
+				16BFD40AC5016CB9B8781EF0 /* libPods-FlixPick.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1715F3F15748728978DF1FF9 /* libPods-RentACourt-tvOS.a in Frameworks */,
+				1715F3F15748728978DF1FF9 /* libPods-FlixPick-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,20 +114,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E78F7CCCD18435B73407504 /* libPods-RentACourt-tvOSTests.a in Frameworks */,
+				7E78F7CCCD18435B73407504 /* libPods-FlixPick-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* RentACourtTests */ = {
+		00E356EF1AD99517003FC87E /* FlixPickTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* RentACourtTests.m */,
+				00E356F21AD99517003FC87E /* FlixPickTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = RentACourtTests;
+			path = FlixPickTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -138,7 +138,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* RentACourt */ = {
+		13B07FAE1A68108700A75B9A /* FlixPick */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -149,7 +149,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = RentACourt;
+			name = FlixPick;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -157,10 +157,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				31F5A98C5430AA0124858E7F /* libPods-RentACourt.a */,
-				560D42C8F169767D2C94BCA9 /* libPods-RentACourt-RentACourtTests.a */,
-				26F82DB2A711FF1742E99170 /* libPods-RentACourt-tvOS.a */,
-				5239CD7F34402D0BFB677016 /* libPods-RentACourt-tvOSTests.a */,
+				31F5A98C5430AA0124858E7F /* libPods-FlixPick.a */,
+				560D42C8F169767D2C94BCA9 /* libPods-FlixPick-FlixPickTests.a */,
+				26F82DB2A711FF1742E99170 /* libPods-FlixPick-tvOS.a */,
+				5239CD7F34402D0BFB677016 /* libPods-FlixPick-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -175,9 +175,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* RentACourt */,
+				13B07FAE1A68108700A75B9A /* FlixPick */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* RentACourtTests */,
+				00E356EF1AD99517003FC87E /* FlixPickTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E0A8BA2C8A3D448ACF84F37D /* Pods */,
@@ -191,10 +191,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* RentACourt.app */,
-				00E356EE1AD99517003FC87E /* RentACourtTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* RentACourt-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* RentACourt-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* FlixPick.app */,
+				00E356EE1AD99517003FC87E /* FlixPickTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* FlixPick-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* FlixPick-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,14 +225,14 @@
 		E0A8BA2C8A3D448ACF84F37D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BF75075D9B3692A73FF19BB7 /* Pods-RentACourt.debug.xcconfig */,
-				F2F007CDE14B2A7B78F39810 /* Pods-RentACourt.release.xcconfig */,
-				A67B0F28BE29EFF18BFACC7B /* Pods-RentACourt-RentACourtTests.debug.xcconfig */,
-				31E970B7A8B9D9E12BF91B7E /* Pods-RentACourt-RentACourtTests.release.xcconfig */,
-				D3B187A4B64F245E695BAD20 /* Pods-RentACourt-tvOS.debug.xcconfig */,
-				0665D7B6EED1D650D2BAE446 /* Pods-RentACourt-tvOS.release.xcconfig */,
-				E2579A6993CA51EB51A494FA /* Pods-RentACourt-tvOSTests.debug.xcconfig */,
-				2EEB41752FA2F6775D9196A2 /* Pods-RentACourt-tvOSTests.release.xcconfig */,
+				BF75075D9B3692A73FF19BB7 /* Pods-FlixPick.debug.xcconfig */,
+				F2F007CDE14B2A7B78F39810 /* Pods-FlixPick.release.xcconfig */,
+				A67B0F28BE29EFF18BFACC7B /* Pods-FlixPick-FlixPickTests.debug.xcconfig */,
+				31E970B7A8B9D9E12BF91B7E /* Pods-FlixPick-FlixPickTests.release.xcconfig */,
+				D3B187A4B64F245E695BAD20 /* Pods-FlixPick-tvOS.debug.xcconfig */,
+				0665D7B6EED1D650D2BAE446 /* Pods-FlixPick-tvOS.release.xcconfig */,
+				E2579A6993CA51EB51A494FA /* Pods-FlixPick-tvOSTests.debug.xcconfig */,
+				2EEB41752FA2F6775D9196A2 /* Pods-FlixPick-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -240,9 +240,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* RentACourtTests */ = {
+		00E356ED1AD99517003FC87E /* FlixPickTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RentACourtTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FlixPickTests" */;
 			buildPhases = (
 				B06D4A060D51CB70DDCA79D9 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -255,14 +255,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = RentACourtTests;
-			productName = RentACourtTests;
-			productReference = 00E356EE1AD99517003FC87E /* RentACourtTests.xctest */;
+			name = FlixPickTests;
+			productName = FlixPickTests;
+			productReference = 00E356EE1AD99517003FC87E /* FlixPickTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* RentACourt */ = {
+		13B07F861A680F5B00A75B9A /* FlixPick */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RentACourt" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FlixPick" */;
 			buildPhases = (
 				F9A955164772FF0E29B56F3F /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -276,14 +276,14 @@
 			);
 			dependencies = (
 			);
-			name = RentACourt;
-			productName = RentACourt;
-			productReference = 13B07F961A680F5B00A75B9A /* RentACourt.app */;
+			name = FlixPick;
+			productName = FlixPick;
+			productReference = 13B07F961A680F5B00A75B9A /* FlixPick.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* RentACourt-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* FlixPick-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "RentACourt-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "FlixPick-tvOS" */;
 			buildPhases = (
 				FE3CA4A9FE810905FC10AEC5 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -296,14 +296,14 @@
 			);
 			dependencies = (
 			);
-			name = "RentACourt-tvOS";
-			productName = "RentACourt-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* RentACourt-tvOS.app */;
+			name = "FlixPick-tvOS";
+			productName = "FlixPick-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* FlixPick-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* RentACourt-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* FlixPick-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "RentACourt-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "FlixPick-tvOSTests" */;
 			buildPhases = (
 				6B964823B82F6611D035EA1E /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -315,9 +315,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "RentACourt-tvOSTests";
-			productName = "RentACourt-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* RentACourt-tvOSTests.xctest */;
+			name = "FlixPick-tvOSTests";
+			productName = "FlixPick-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* FlixPick-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -347,7 +347,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RentACourt" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "FlixPick" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -360,10 +360,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* RentACourt */,
-				00E356ED1AD99517003FC87E /* RentACourtTests */,
-				2D02E47A1E0B4A5D006451C7 /* RentACourt-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* RentACourt-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* FlixPick */,
+				00E356ED1AD99517003FC87E /* FlixPickTests */,
+				2D02E47A1E0B4A5D006451C7 /* FlixPick-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* FlixPick-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -437,7 +437,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RentACourt-RentACourtTests/Pods-RentACourt-RentACourtTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixPick-FlixPickTests/Pods-FlixPick-FlixPickTests-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -478,7 +478,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RentACourt-RentACourtTests/Pods-RentACourt-RentACourtTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlixPick-FlixPickTests/Pods-FlixPick-FlixPickTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6B964823B82F6611D035EA1E /* [CP] Check Pods Manifest.lock */ = {
@@ -496,7 +496,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RentACourt-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FlixPick-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -518,7 +518,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RentACourt-RentACourtTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FlixPick-FlixPickTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -531,7 +531,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RentACourt/Pods-RentACourt-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixPick/Pods-FlixPick-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -572,7 +572,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RentACourt/Pods-RentACourt-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlixPick/Pods-FlixPick-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F9A955164772FF0E29B56F3F /* [CP] Check Pods Manifest.lock */ = {
@@ -590,7 +590,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RentACourt-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FlixPick-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -650,7 +650,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RentACourt-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FlixPick-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -664,7 +664,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* RentACourtTests.m in Sources */,
+				00E356F31AD99517003FC87E /* FlixPickTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,7 +690,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* RentACourtTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* FlixPickTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,12 +699,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* RentACourt */;
+			target = 13B07F861A680F5B00A75B9A /* FlixPick */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* RentACourt-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* FlixPick-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -712,14 +712,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A67B0F28BE29EFF18BFACC7B /* Pods-RentACourt-RentACourtTests.debug.xcconfig */;
+			baseConfigurationReference = A67B0F28BE29EFF18BFACC7B /* Pods-FlixPick-FlixPickTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = RentACourtTests/Info.plist;
+				INFOPLIST_FILE = FlixPickTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -729,17 +729,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RentACourt.app/RentACourt";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlixPick.app/FlixPick";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31E970B7A8B9D9E12BF91B7E /* Pods-RentACourt-RentACourtTests.release.xcconfig */;
+			baseConfigurationReference = 31E970B7A8B9D9E12BF91B7E /* Pods-FlixPick-FlixPickTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = RentACourtTests/Info.plist;
+				INFOPLIST_FILE = FlixPickTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -749,20 +749,20 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RentACourt.app/RentACourt";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlixPick.app/FlixPick";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF75075D9B3692A73FF19BB7 /* Pods-RentACourt.debug.xcconfig */;
+			baseConfigurationReference = BF75075D9B3692A73FF19BB7 /* Pods-FlixPick.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TQD69JN96Q;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = RentACourt/Info.plist;
+				INFOPLIST_FILE = FlixPick/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -770,7 +770,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = RentACourt;
+				PRODUCT_NAME = FlixPick;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -779,13 +779,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2F007CDE14B2A7B78F39810 /* Pods-RentACourt.release.xcconfig */;
+			baseConfigurationReference = F2F007CDE14B2A7B78F39810 /* Pods-FlixPick.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TQD69JN96Q;
-				INFOPLIST_FILE = RentACourt/Info.plist;
+				INFOPLIST_FILE = FlixPick/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -793,7 +793,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = RentACourt;
+				PRODUCT_NAME = FlixPick;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -801,7 +801,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3B187A4B64F245E695BAD20 /* Pods-RentACourt-tvOS.debug.xcconfig */;
+			baseConfigurationReference = D3B187A4B64F245E695BAD20 /* Pods-FlixPick-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -812,14 +812,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "RentACourt-tvOS/Info.plist";
+				INFOPLIST_FILE = "FlixPick-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.RentACourt-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.FlixPick-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -829,7 +829,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0665D7B6EED1D650D2BAE446 /* Pods-RentACourt-tvOS.release.xcconfig */;
+			baseConfigurationReference = 0665D7B6EED1D650D2BAE446 /* Pods-FlixPick-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -840,14 +840,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "RentACourt-tvOS/Info.plist";
+				INFOPLIST_FILE = "FlixPick-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.RentACourt-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.FlixPick-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -857,7 +857,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2579A6993CA51EB51A494FA /* Pods-RentACourt-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = E2579A6993CA51EB51A494FA /* Pods-FlixPick-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -867,24 +867,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "RentACourt-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "FlixPick-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.RentACourt-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.FlixPick-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RentACourt-tvOS.app/RentACourt-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlixPick-tvOS.app/FlixPick-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EEB41752FA2F6775D9196A2 /* Pods-RentACourt-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 2EEB41752FA2F6775D9196A2 /* Pods-FlixPick-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -894,17 +894,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "RentACourt-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "FlixPick-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.RentACourt-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.FlixPick-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RentACourt-tvOS.app/RentACourt-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlixPick-tvOS.app/FlixPick-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1025,7 +1025,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RentACourtTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FlixPickTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1034,7 +1034,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RentACourt" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FlixPick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1043,7 +1043,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "RentACourt-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "FlixPick-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1052,7 +1052,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "RentACourt-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "FlixPick-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1061,7 +1061,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "RentACourt" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "FlixPick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

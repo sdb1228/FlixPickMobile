@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'RentACourt' do
+target 'FlixPick' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
@@ -12,7 +12,7 @@ target 'RentACourt' do
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
-  target 'RentACourtTests' do
+  target 'FlixPickTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -27,10 +27,10 @@ target 'RentACourt' do
   end
 end
 
-target 'RentACourt-tvOS' do
-  # Pods for RentACourt-tvOS
+target 'FlixPick-tvOS' do
+  # Pods for FlixPick-tvOS
 
-  target 'RentACourt-tvOSTests' do
+  target 'FlixPick-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

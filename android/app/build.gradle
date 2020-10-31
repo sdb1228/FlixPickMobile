@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rentacourt"
+        applicationId "com.flixpick"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

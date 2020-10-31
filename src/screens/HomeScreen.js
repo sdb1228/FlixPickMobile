@@ -8,8 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import ActionButton from 'react-native-action-button';
-import {getUsers} from '../api/mocks';
-// import {setToken} from '../api/token';
+import {getHome} from '../api/mocks';
 
 const Item = ({title}) => (
   <View style={styles.item}>
@@ -32,22 +31,22 @@ export default class HomeScreen extends React.Component {
     }
   }
 
-  state = {users: [], hasLoadedUsers: false, userLoadingErrorMessage: ''};
+  state = {movies: [], hasLoadedUsers: false, userLoadingErrorMessage: ''};
 
   loadUsers() {
     this.setState({hasLoadedUsers: false, userLoadingErrorMessage: ''});
-    getUsers()
-      .then((res) =>
+    getHome()
+      .then((res) => {
         this.setState({
           hasLoadedUsers: true,
-          users: res.users,
-        }),
-      )
+          movies: res.data,
+        });
+      })
       .catch(this.handleUserLoadingError);
   }
 
   handleUserLoadingError = (res) => {
-    if (res.error === 401) {
+    if (res.message.includes('401')) {
       this.props.navigation.navigate('Login');
     } else {
       this.setState({
@@ -75,14 +74,14 @@ export default class HomeScreen extends React.Component {
   // </View>
   //
 
-  renderItem = ({item}) => <Item title={item.email} />;
+  renderItem = ({item}) => <Item title={item.title} />;
 
   render() {
-    const {users} = this.state;
+    const {movies} = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <FlatList
-          data={users}
+          data={movies}
           renderItem={this.renderItem}
           keyExtractor={(item) => item.id}
         />
