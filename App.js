@@ -25,6 +25,14 @@ function MyStack() {
               style={styles.searchIcon}
             />
           ),
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#141414',
+            shadowRadius: 0,
+            shadowOffset: {
+              height: 0,
+            },
+          },
           headerRight: () => (
             <Icon
               onPress={() => alert('This goes to User Settings')}

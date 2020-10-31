@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  StyleSheet,
-  StatusBar,
-} from 'react-native';
-import ActionButton from 'react-native-action-button';
+import {View, Text, SafeAreaView, StyleSheet, StatusBar} from 'react-native';
+import Swiper from 'react-native-deck-swiper';
 import {getHome} from '../api/mocks';
 
 const Item = ({title}) => (
@@ -79,19 +72,30 @@ export default class HomeScreen extends React.Component {
   render() {
     const {movies} = this.state;
     return (
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={movies}
-          renderItem={this.renderItem}
-          keyExtractor={(item) => item.id}
-        />
-        <ActionButton
-          buttonColor="rgba(231,76,60,1)"
-          onPress={() => {
-            this.props.navigation.navigate('CreateRecreation');
-          }}
-        />
-      </SafeAreaView>
+      <View style={styles.rootContainer}>
+        <SafeAreaView style={styles.container}>
+          <Swiper
+            cards={movies || []}
+            renderCard={(card) => {
+              return (
+                <View style={styles.card}>
+                  <Text style={styles.text}>
+                    {!card ? 'Welcome to Flix Picks!' : card.title}
+                  </Text>
+                </View>
+              );
+            }}
+            onSwiped={(cardIndex) => {
+              console.log(cardIndex);
+            }}
+            onSwipedAll={() => {
+              console.log('onSwipedAll');
+            }}
+            cardIndex={0}
+            backgroundColor={'#141414'}
+            stackSize={3}></Swiper>
+        </SafeAreaView>
+      </View>
     );
   }
 }
@@ -101,18 +105,22 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
   },
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+  rootContainer: {
+    backgroundColor: '#333333',
+    flex: 1,
   },
-  title: {
-    fontSize: 32,
+  card: {
+    borderRadius: 4,
+    borderWidth: 2,
+    height: '80%',
+    borderColor: '#333333',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#333333',
   },
-  actionButtonIcon: {
-    fontSize: 20,
-    height: 22,
-    color: 'white',
+  text: {
+    textAlign: 'center',
+    fontSize: 50,
+    backgroundColor: 'transparent',
   },
 });
