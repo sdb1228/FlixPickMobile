@@ -44,24 +44,6 @@ export default class HomeScreen extends React.Component {
     }
   };
 
-  // logOut = async () => {
-  // this.setState({ hasLoadedUsers: false, users: [] })
-  // await setToken('');
-  // this.props.navigation.navigate('Login');
-  // <Button title="Log out" onPress={this.logOut} />
-  // };
-  //
-  // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-  // <Text>HomeScreen</Text>
-  // {users.map((user) => (
-  // <Text key={user.email}>{user.email}</Text>
-  // ))}
-  // {userLoadingErrorMessage ? (
-  // <Text>{userLoadingErrorMessage}</Text>
-  // ) : null}
-  // </View>
-  //
-
   render() {
     const {movies} = this.state;
     return (

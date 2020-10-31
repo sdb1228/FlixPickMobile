@@ -37,3 +37,11 @@ export const getHome = () => {
     url: '/home.json',
   });
 };
+
+export const logout = () => {
+  return axios({
+    method: 'delete',
+    'Content-Type': 'application/json',
+    url: 'users/sign_out',
+  });
+};

@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   tinyLogo: {
     width: '100%',
     height: 400,
+    resizeMode: 'contain',
   },
   card: {
     borderRadius: 4,
