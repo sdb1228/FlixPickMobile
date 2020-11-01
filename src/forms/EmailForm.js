@@ -8,8 +8,8 @@ const EmailForm = ({buttonText, onSubmit, children, onAuthentication}) => {
 
   const submit = () => {
     onSubmit(email, password)
-      .then(async () => {
-        onAuthentication();
+      .then((res) => {
+        onAuthentication(res);
       })
       .catch((res) => {
         setErrorMessage(res.data.error);

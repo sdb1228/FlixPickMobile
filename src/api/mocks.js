@@ -6,7 +6,7 @@ axios.defaults.baseURL = URL;
 export const login = (email, password) => {
   return axios({
     method: 'post',
-    url: 'users/sign_in',
+    url: 'users/sign_in.json',
     data: {
       user: {
         email: email,

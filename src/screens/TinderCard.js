@@ -1,13 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
 var decode = require('unescape');
+const fallbackImage =
+  'https://lh3.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI';
 
 const TinderCard = ({title, large_image, synopsis}) => (
   <View style={styles.card}>
     <Image
       style={styles.tinyLogo}
       source={{
-        uri: large_image,
+        uri: large_image || fallbackImage,
       }}
     />
     <View style={styles.textContainer}>

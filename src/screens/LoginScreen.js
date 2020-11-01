@@ -8,7 +8,7 @@ const LoginScreen = ({navigation}) => {
     <EmailForm
       buttonText="Log in"
       onSubmit={login}
-      onAuthentication={() => navigation.navigate('Home')}>
+      onAuthentication={(res) => navigation.navigate('Home', res)}>
       <Button
         title="Create account"
         onPress={() => navigation.navigate('CreateAccount')}

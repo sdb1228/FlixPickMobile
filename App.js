@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import Drawer from 'react-native-drawer';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LoginScreen from './src/screens/LoginScreen';
@@ -86,7 +86,13 @@ class MyStack extends React.Component {
             name="Home"
             component={HomeScreen}
           />
-          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen
+            options={{
+              headerLeft: () => <View />,
+            }}
+            name="Login"
+            component={LoginScreen}
+          />
           <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
           <Stack.Screen
             options={{

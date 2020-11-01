@@ -6,27 +6,26 @@ import TinderCard from './TinderCard';
 
 export default class HomeScreen extends React.Component {
   componentDidUpdate(prevProps) {
-    if (prevProps.isFocused !== this.props.isFocused) {
-      if (!this.state.hasLoadedUsers) {
-        this.loadUsers();
+    if (this.props?.route?.params?.status) {
+      if (!this.state.loadingMovies && !this.state.movies.length > 0) {
+        this.loadMovies();
       }
     }
   }
 
   componentDidMount() {
-    if (!this.state.hasLoadedUsers) {
-      this.loadUsers();
+    if (!this.state.movies.length) {
+      this.loadMovies();
     }
   }
 
-  state = {movies: [], hasLoadedUsers: false, userLoadingErrorMessage: ''};
+  state = {movies: [], movieLoadingErrorMessage: ''};
 
-  loadUsers() {
-    this.setState({hasLoadedUsers: false, userLoadingErrorMessage: ''});
+  loadMovies() {
+    this.setState({movieLoadingErrorMessage: '', loadingMovies: true});
     getHome()
       .then((res) => {
         this.setState({
-          hasLoadedUsers: true,
           movies: res.data,
         });
       })
@@ -35,11 +34,15 @@ export default class HomeScreen extends React.Component {
 
   handleUserLoadingError = (res) => {
     if (res.message.includes('401')) {
+      this.setState({
+        loadingMovies: false,
+      });
       this.props.navigation.navigate('Login');
     } else {
       this.setState({
-        hasLoadedUsers: false,
-        userLoadingErrorMessage: res.message,
+        hasLoadedMovies: false,
+        loadingMovies: false,
+        movieLoadingErrorMessage: res.message,
       });
     }
   };
