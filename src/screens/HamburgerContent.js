@@ -7,7 +7,7 @@ const HamburgerContent = ({onHamburgerMenuItemClick}) => (
       scrollEnabled={false}
       data={[
         {key: 'AddFriend', value: 'Add Friend'},
-        {key: 'FriendList', value: 'Friend List'},
+        {key: 'FriendsList', value: 'Friends List'},
         {key: 'Settings', value: 'Settings'},
         {key: 'Logout', value: 'Logout'},
       ]}

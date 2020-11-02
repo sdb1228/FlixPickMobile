@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import CreateAccountScreen from './src/screens/CreateAccountScreen';
-import CreateRecreation from './src/screens/CreateRecreation';
+import FriendsList from './src/screens/FriendsList';
 import HamburgerContent from './src/screens/HamburgerContent';
 import {logout} from './src/api/mocks';
 
@@ -27,6 +27,10 @@ class MyStack extends React.Component {
     switch (item) {
       case 'Logout':
         this.logOut();
+        break;
+      case 'FriendsList':
+        navigationRef.current?.navigate('FriendsList');
+        this.closeControlPanel();
         break;
       default:
         this.logOut();
@@ -62,7 +66,7 @@ class MyStack extends React.Component {
                   name="menu"
                   size={35}
                   color="white"
-                  style={styles.searchIcon}
+                  style={styles.settingsIcon}
                 />
               ),
               headerTintColor: 'white',
@@ -96,10 +100,29 @@ class MyStack extends React.Component {
           <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
           <Stack.Screen
             options={{
-              title: 'Create Recreation',
+              title: '',
+              headerTintColor: 'white',
+              headerBackTitle: ' ',
+              headerStyle: {
+                backgroundColor: '#141414',
+                shadowRadius: 0,
+                shadowOffset: {
+                  height: 0,
+                },
+              },
+              headerLeftContainerStyle: styles.settingsIcon,
+              headerRight: () => (
+                <Icon
+                  onPress={() => alert('This search')}
+                  name="add-outline"
+                  size={35}
+                  color="white"
+                  style={styles.searchIcon}
+                />
+              ),
             }}
-            name="CreateRecreation"
-            component={CreateRecreation}
+            name="FriendsList"
+            component={FriendsList}
           />
         </Stack.Navigator>
       </Drawer>
@@ -117,9 +140,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   searchIcon: {
-    marginLeft: 20,
+    marginRight: 20,
   },
   settingsIcon: {
-    marginRight: 20,
+    marginLeft: 10,
   },
 });

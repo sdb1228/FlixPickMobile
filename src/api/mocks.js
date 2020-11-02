@@ -56,3 +56,10 @@ export const logout = () => {
     url: 'users/sign_out',
   });
 };
+
+export const getFriendsList = () => {
+  return axios({
+    method: 'get',
+    url: '/relationships.json',
+  });
+};

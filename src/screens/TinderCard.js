@@ -1,23 +1,26 @@
 import React from 'react';
 import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
-var decode = require('unescape');
+const AllHtmlEntities = require('html-entities').AllHtmlEntities; // Synonym for HTML5 entities.
+const entities = new AllHtmlEntities();
 const fallbackImage =
   'https://lh3.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI';
 
 const TinderCard = ({title, large_image, synopsis}) => (
   <View style={styles.card}>
     <Image
-      style={styles.tinyLogo}
+      style={styles.SwipCardImage}
       source={{
         uri: large_image || fallbackImage,
       }}
     />
     <View style={styles.textContainer}>
       <Text style={styles.title}>
-        {!title ? 'Welcome to Flix Picks!' : decode(title)}
+        {!title ? 'Welcome to Flix Picks!' : entities.decode(title)}
       </Text>
-      <Text style={styles.synopsis}>
-        {!synopsis ? 'The bets movie matching out there' : decode(synopsis)}
+      <Text numberOfLines={4} style={styles.synopsis}>
+        {!synopsis
+          ? 'The bets movie matching out there'
+          : entities.decode(synopsis)}
       </Text>
     </View>
   </View>
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#333333',
     flex: 1,
   },
-  tinyLogo: {
+  SwipCardImage: {
     width: '100%',
     height: 400,
     resizeMode: 'contain',
