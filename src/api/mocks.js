@@ -27,10 +27,26 @@ export const userMovieReaction = (movieId, reaction) => {
   });
 };
 
+export const addFriend = (email) => {
+  return axios({
+    method: 'post',
+    url: '/relationships.json',
+    data: {
+      email,
+    },
+  });
+};
+
+export const friendReaction = (reaction, id) => {
+  return axios.post(`/relationships/${id}.json`, {
+    addFriend: reaction,
+  });
+};
+
 export const createAccount = (email, password, displayName) => {
   return axios({
     method: 'post',
-    url: '/users',
+    url: '/users.json',
     data: {
       user: {
         email: email,
@@ -46,6 +62,13 @@ export const getHome = () => {
   return axios({
     method: 'get',
     url: '/home.json',
+  });
+};
+
+export const getCurrentUser = () => {
+  return axios({
+    method: 'get',
+    url: '/settings.json',
   });
 };
 
