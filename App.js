@@ -59,7 +59,7 @@ class MyStack extends React.Component {
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             options={{
-              title: 'Flix Pick',
+              title: '',
               headerLeft: () => (
                 <Icon
                   onPress={() => this.openControlPanel()}
@@ -77,15 +77,15 @@ class MyStack extends React.Component {
                   height: 0,
                 },
               },
-              headerRight: () => (
-                <Icon
-                  onPress={() => alert('This search')}
-                  name="search-outline"
-                  size={35}
-                  color="white"
-                  style={styles.searchIcon}
-                />
-              ),
+              // headerRight: () => (
+              // <Icon
+              // onPress={() => alert('This search')}
+              // name="search-outline"
+              // size={35}
+              // color="white"
+              // style={styles.searchIcon}
+              // />
+              // ),
             }}
             name="Home"
             component={HomeScreen}
