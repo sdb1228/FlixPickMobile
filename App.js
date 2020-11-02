@@ -165,7 +165,7 @@ class MyStack extends React.Component {
                   onPress={() => {
                     this.setModalVisible(true);
                   }}
-                  name="add-outline"
+                  name="person-add"
                   size={35}
                   color="white"
                   style={styles.searchIcon}
@@ -176,8 +176,7 @@ class MyStack extends React.Component {
             component={FriendsList}
           />
         </Stack.Navigator>
-
-        <Modal animationType="fade" transparent={true} visible={modalVisible}>
+        <Modal animationType="fade" visible={modalVisible}>
           <Spinner
             visible={this.state.addFriendLoading}
             textContent={'Sending...'}

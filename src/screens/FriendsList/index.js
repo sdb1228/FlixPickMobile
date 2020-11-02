@@ -1,9 +1,18 @@
 import React, {Component} from 'react';
-import {ScrollView, StyleSheet, View, Text, Image} from 'react-native';
+import {
+  TouchableHighlight,
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  Modal,
+  Image,
+} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import {getFriendsList, friendReaction} from '../../api/mocks';
 import Icon from 'react-native-vector-icons/Ionicons';
-const AllHtmlEntities = require('html-entities').AllHtmlEntities; // Synonym for HTML5 entities.
+import TinderCard from '../TinderCard';
+const AllHtmlEntities = require('html-entities').AllHtmlEntities;
 const entities = new AllHtmlEntities();
 const fallbackImage =
   'https://lh3.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI';
@@ -12,6 +21,9 @@ export default class FriendsList extends Component {
   state = {
     activeSections: [],
     friends: [],
+    loadingFriends: false,
+    modalVisible: false,
+    selectedMovie: null,
   };
 
   componentDidMount() {
@@ -36,14 +48,22 @@ export default class FriendsList extends Component {
   };
 
   loadFriends() {
+    this.setState({
+      loadingFriends: true,
+    });
     getFriendsList()
       .then((res) => {
         this.setState({
           friends: res.data,
+          loadingFriends: false,
         });
       })
       .catch(this.handleUserLoadingError);
   }
+
+  setModalVisible = (visible, selectedMovie) => {
+    this.setState({modalVisible: visible, selectedMovie});
+  };
 
   setSections = (sections) => {
     this.setState({
@@ -152,7 +172,7 @@ export default class FriendsList extends Component {
     );
   };
 
-  renderContent(section, _, isActive) {
+  renderContent = (section, _, isActive) => {
     return (
       <View
         style={{
@@ -164,19 +184,26 @@ export default class FriendsList extends Component {
         }}>
         <ScrollView>
           {section.same_liked_movies.map((movie) => (
-            <View key={movie.id} style={styles.imageContainer}>
-              <Image
-                style={styles.sameLikedMoviesImage}
-                source={{
-                  uri: movie.image || fallbackImage,
-                }}
-              />
-              <View>
-                <Text style={{color: 'rgb(185, 185, 185)'}}>
-                  {entities.decode(movie.title)}
-                </Text>
+            <TouchableHighlight
+              key={movie.id}
+              style={{borderWidth: 1, borderColor: '#333333'}}
+              onPress={() => {
+                this.setModalVisible(true, movie);
+              }}>
+              <View style={styles.imageContainer}>
+                <Image
+                  style={styles.sameLikedMoviesImage}
+                  source={{
+                    uri: movie.image || fallbackImage,
+                  }}
+                />
+                <View>
+                  <Text style={{color: 'rgb(185, 185, 185)'}}>
+                    {entities.decode(movie.title)}
+                  </Text>
+                </View>
               </View>
-            </View>
+            </TouchableHighlight>
           ))}
           {section.status === 'Pending' && (
             <Text style={{color: 'white', padding: 10}}>
@@ -193,13 +220,14 @@ export default class FriendsList extends Component {
         </ScrollView>
       </View>
     );
-  }
+  };
 
   render() {
+    const {modalVisible} = this.state;
     return (
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{paddingTop: 30}}>
-          {this.state.friends.length === 0 && (
+          {this.state.friends.length === 0 && !this.state.loadingFriends && (
             <Text
               style={{
                 color: 'white',
@@ -209,6 +237,40 @@ export default class FriendsList extends Component {
               }}>
               Add some friends to see what matches you have with them!
             </Text>
+          )}
+          {this.state.loadingFriends && (
+            <Text
+              style={{
+                color: 'white',
+                fontWeight: 'bold',
+                fontSize: 40,
+                padding: 10,
+              }}>
+              Loading Friends....
+            </Text>
+          )}
+          {this.state.friends.length !== 0 && (
+            <TouchableHighlight style={{marginBottom: 20}} onPress={() => {}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  width: '100%',
+                  justifyContent: 'flex-end',
+                  alignItems: 'center',
+                  paddingRight: 20,
+                }}>
+                <Icon
+                  name="people"
+                  size={30}
+                  color="white"
+                  style={{paddingRight: 10}}
+                />
+                <Text
+                  style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>
+                  Add Group
+                </Text>
+              </View>
+            </TouchableHighlight>
           )}
           <Accordion
             activeSections={this.state.activeSections}
@@ -220,6 +282,46 @@ export default class FriendsList extends Component {
             onChange={this.setSections}
           />
         </ScrollView>
+        <Modal animationType="fade" transparent visible={modalVisible}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <View style={{width: '100%', justifyContent: 'flex-start'}}>
+                <Icon
+                  onPress={() => {
+                    this.setModalVisible(!modalVisible);
+                  }}
+                  name="close-outline"
+                  size={30}
+                  color="white"
+                />
+              </View>
+
+              <Image
+                style={{
+                  width: '100%',
+                  height: 400,
+                  resizeMode: 'contain',
+                }}
+                onError={({nativeEvent: {error}}) => console.log(error)}
+                source={{
+                  uri: this.state.selectedMovie?.large_image || fallbackImage,
+                }}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.modalTitle}>
+                  {!this.state.selectedMovie?.title
+                    ? 'Welcome to Flix Picks!'
+                    : entities.decode(this.state.selectedMovie?.title)}
+                </Text>
+                <Text numberOfLines={6} style={styles.synopsis}>
+                  {!this.state.selectedMovie?.synopsis
+                    ? 'The bets movie matching out there'
+                    : entities.decode(this.state.selectedMovie?.synopsis)}
+                </Text>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -287,5 +389,62 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingRight: 10,
+  },
+  centeredView: {
+    flex: 1,
+    alignItems: 'center',
+    paddingTop: 35,
+    paddingBottom: 35,
+  },
+  modalView: {
+    backgroundColor: '#333333',
+    borderRadius: 20,
+    padding: 15,
+    width: 350,
+    height: 650,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+
+  modalTitle: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 25,
+    paddingTop: 10,
+    backgroundColor: 'transparent',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  spinnerTextStyle: {
+    color: '#FFF',
+  },
+  textContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  synopsis: {
+    textAlign: 'center',
+    color: '#ccc',
+    paddingTop: 10,
+    fontSize: 20,
+    backgroundColor: 'transparent',
+  },
+  modalText: {
+    marginBottom: 15,
+    fontSize: 25,
+    textAlign: 'center',
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
