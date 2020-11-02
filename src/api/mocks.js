@@ -6,12 +6,23 @@ axios.defaults.baseURL = URL;
 export const login = (email, password) => {
   return axios({
     method: 'post',
+    headers: {'User-Agent': 'flixpick-mobile'},
     url: 'users/sign_in.json',
     data: {
       user: {
         email: email,
         password: password,
       },
+    },
+  });
+};
+
+export const userMovieReaction = (movieId, reaction) => {
+  return axios({
+    method: 'post',
+    url: `/movie_reactions/${movieId}.json`,
+    data: {
+      reaction,
     },
   });
 };

@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, SafeAreaView, StyleSheet, StatusBar} from 'react-native';
+import {View, SafeAreaView, StyleSheet, StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-deck-swiper';
-import {getHome} from '../api/mocks';
+import {getHome, userMovieReaction} from '../api/mocks';
 import TinderCard from './TinderCard';
 
 export default class HomeScreen extends React.Component {
@@ -48,6 +48,10 @@ export default class HomeScreen extends React.Component {
     }
   };
 
+  handleUserSwipe = (cardIndex, reaction) => {
+    userMovieReaction(this.state.movies[cardIndex].id, reaction);
+  };
+
   render() {
     const {movies} = this.state;
     return (
@@ -57,13 +61,7 @@ export default class HomeScreen extends React.Component {
             overlayLabels={{
               left: {
                 element: (
-                  <Icon
-                    onPress={() => alert('This search')}
-                    name="thumbs-down-outline"
-                    size={100}
-                    color="white"
-                    style={styles.searchIcon}
-                  />
+                  <Icon name="thumbs-down-outline" size={100} color="white" />
                 ),
                 title: 'NOPE',
                 style: {
@@ -78,13 +76,7 @@ export default class HomeScreen extends React.Component {
               },
               right: {
                 element: (
-                  <Icon
-                    onPress={() => alert('This search')}
-                    name="thumbs-up-outline"
-                    size={100}
-                    color="white"
-                    style={styles.searchIcon}
-                  />
+                  <Icon name="thumbs-up-outline" size={100} color="white" />
                 ),
                 title: 'LIKE',
                 style: {
@@ -103,8 +95,11 @@ export default class HomeScreen extends React.Component {
             renderCard={(card) => {
               return <TinderCard {...card} />;
             }}
-            onSwiped={(cardIndex) => {
-              console.log(cardIndex);
+            onSwipedLeft={(cardIndex) => {
+              this.handleUserSwipe(cardIndex, 'Dislike');
+            }}
+            onSwipedRight={(cardIndex) => {
+              this.handleUserSwipe(cardIndex, 'Like');
             }}
             onSwipedAll={() => {
               console.log('onSwipedAll');
