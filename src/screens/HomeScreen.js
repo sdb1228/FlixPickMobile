@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, SafeAreaView, StyleSheet, StatusBar} from 'react-native';
+import {View, Text, SafeAreaView, StyleSheet, StatusBar} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-deck-swiper';
 import {getHome} from '../api/mocks';
 import TinderCard from './TinderCard';
 
 export default class HomeScreen extends React.Component {
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     if (this.props?.route?.params?.status) {
       if (!this.state.loadingMovies && !this.state.movies.length > 0) {
         this.loadMovies();
@@ -53,9 +54,53 @@ export default class HomeScreen extends React.Component {
       <View style={styles.rootContainer}>
         <SafeAreaView style={styles.container}>
           <Swiper
+            overlayLabels={{
+              left: {
+                element: (
+                  <Icon
+                    onPress={() => alert('This search')}
+                    name="thumbs-down-outline"
+                    size={100}
+                    color="white"
+                    style={styles.searchIcon}
+                  />
+                ),
+                title: 'NOPE',
+                style: {
+                  wrapper: {
+                    backgroundColor: '#ea6564',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: 600,
+                  },
+                },
+              },
+              right: {
+                element: (
+                  <Icon
+                    onPress={() => alert('This search')}
+                    name="thumbs-up-outline"
+                    size={100}
+                    color="white"
+                    style={styles.searchIcon}
+                  />
+                ),
+                title: 'LIKE',
+                style: {
+                  wrapper: {
+                    backgroundColor: '#B1DA96',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: 600,
+                  },
+                },
+              },
+            }}
+            animateOverlayLabelsOpacity
             cards={movies || []}
             renderCard={(card) => {
-              console.log(card);
               return <TinderCard {...card} />;
             }}
             onSwiped={(cardIndex) => {
