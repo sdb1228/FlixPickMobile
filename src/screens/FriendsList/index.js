@@ -11,7 +11,6 @@ import {
 import Accordion from 'react-native-collapsible/Accordion';
 import {getFriendsList, friendReaction} from '../../api/mocks';
 import Icon from 'react-native-vector-icons/Ionicons';
-import TinderCard from '../TinderCard';
 const AllHtmlEntities = require('html-entities').AllHtmlEntities;
 const entities = new AllHtmlEntities();
 const fallbackImage =
@@ -24,6 +23,7 @@ export default class FriendsList extends Component {
     loadingFriends: false,
     modalVisible: false,
     selectedMovie: null,
+    groups: [],
   };
 
   componentDidMount() {
@@ -54,8 +54,9 @@ export default class FriendsList extends Component {
     getFriendsList()
       .then((res) => {
         this.setState({
-          friends: res.data,
+          friends: res.data.relationships,
           loadingFriends: false,
+          groups: res.data.groups,
         });
       })
       .catch(this.handleUserLoadingError);
@@ -124,6 +125,26 @@ export default class FriendsList extends Component {
   };
 
   renderHeader = (section, _, isActive) => {
+    if (section.members) {
+      return (
+        <View
+          style={
+            isActive ? styles.headerContainerSelected : styles.headerContainer
+          }>
+          <Text style={styles.friendName}>{section.name}</Text>
+          <View
+            style={
+              this.shouldRenderActionButtons(section)
+                ? styles.actionButtons
+                : styles.movieCount
+            }>
+            <Text style={styles.movieCountText}>
+              {`${section.same_liked_movies.length} Matched`}
+            </Text>
+          </View>
+        </View>
+      );
+    }
     return (
       <View
         style={
@@ -217,6 +238,12 @@ export default class FriendsList extends Component {
                 have similarities
               </Text>
             )}
+          {section.same_liked_movies.length === 0 && section.members && (
+            <Text style={{color: 'white', padding: 10}}>
+              You have no liked movies yet. Movies will show up here when You
+              have similarities
+            </Text>
+          )}
         </ScrollView>
       </View>
     );
@@ -274,7 +301,7 @@ export default class FriendsList extends Component {
           )}
           <Accordion
             activeSections={this.state.activeSections}
-            sections={this.state.friends}
+            sections={this.state.friends.concat(this.state.groups)}
             expandMultiple
             renderHeader={this.renderHeader}
             renderContent={this.renderContent}
