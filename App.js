@@ -176,7 +176,7 @@ class MyStack extends React.Component {
             component={FriendsList}
           />
         </Stack.Navigator>
-        <Modal animationType="fade" visible={modalVisible}>
+        <Modal transparent animationType="fade" visible={modalVisible}>
           <Spinner
             visible={this.state.addFriendLoading}
             textContent={'Sending...'}

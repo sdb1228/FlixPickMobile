@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {
   TouchableHighlight,
+  TouchableOpacity,
   ScrollView,
   StyleSheet,
   View,
   Text,
-  Modal,
   Image,
 } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
+import MovieDetailsModal from '../../Modals/MovieDetailsModal';
+import AddGroupModal from '../../Modals/AddGroupModal';
 import {getFriendsList, friendReaction} from '../../api/mocks';
 import Icon from 'react-native-vector-icons/Ionicons';
 const AllHtmlEntities = require('html-entities').AllHtmlEntities;
@@ -21,7 +23,8 @@ export default class FriendsList extends Component {
     activeSections: [],
     friends: [],
     loadingFriends: false,
-    modalVisible: false,
+    movieDetailsModalOpen: false,
+    addGroupModal: false,
     selectedMovie: null,
     groups: [],
   };
@@ -62,8 +65,12 @@ export default class FriendsList extends Component {
       .catch(this.handleUserLoadingError);
   }
 
-  setModalVisible = (visible, selectedMovie) => {
-    this.setState({modalVisible: visible, selectedMovie});
+  setMovieDetailsModalVisible = (visible, selectedMovie) => {
+    this.setState({movieDetailsModalOpen: visible, selectedMovie});
+  };
+
+  setAddGroupModalVisible = (visible) => {
+    this.setState({addGroupModal: visible});
   };
 
   setSections = (sections) => {
@@ -93,6 +100,16 @@ export default class FriendsList extends Component {
       return true;
     }
     return false;
+  };
+
+  friendName = (relationship) => {
+    return relationship.second_user
+      ? relationship.second_user.display_name
+        ? relationship.second_user.display_name
+        : relationship.second_user.email
+      : relationship.first_user.display_name
+      ? relationship.first_user.display_name
+      : relationship.first_user.email;
   };
 
   relationshipReaction = (reaction, id) => {
@@ -209,7 +226,7 @@ export default class FriendsList extends Component {
               key={movie.id}
               style={{borderWidth: 1, borderColor: '#333333'}}
               onPress={() => {
-                this.setModalVisible(true, movie);
+                this.setMovieDetailsModalVisible(true, movie);
               }}>
               <View style={styles.imageContainer}>
                 <Image
@@ -250,7 +267,6 @@ export default class FriendsList extends Component {
   };
 
   render() {
-    const {modalVisible} = this.state;
     return (
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{paddingTop: 30}}>
@@ -277,7 +293,11 @@ export default class FriendsList extends Component {
             </Text>
           )}
           {this.state.friends.length !== 0 && (
-            <TouchableHighlight style={{marginBottom: 20}} onPress={() => {}}>
+            <TouchableOpacity
+              style={{marginBottom: 20}}
+              onPress={() => {
+                this.setAddGroupModalVisible(true);
+              }}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -297,7 +317,7 @@ export default class FriendsList extends Component {
                   Add Group
                 </Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           )}
           <Accordion
             activeSections={this.state.activeSections}
@@ -309,46 +329,19 @@ export default class FriendsList extends Component {
             onChange={this.setSections}
           />
         </ScrollView>
-        <Modal animationType="fade" transparent visible={modalVisible}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <View style={{width: '100%', justifyContent: 'flex-start'}}>
-                <Icon
-                  onPress={() => {
-                    this.setModalVisible(!modalVisible);
-                  }}
-                  name="close-outline"
-                  size={30}
-                  color="white"
-                />
-              </View>
-
-              <Image
-                style={{
-                  width: '100%',
-                  height: 400,
-                  resizeMode: 'contain',
-                }}
-                onError={({nativeEvent: {error}}) => console.log(error)}
-                source={{
-                  uri: this.state.selectedMovie?.large_image || fallbackImage,
-                }}
-              />
-              <View style={styles.textContainer}>
-                <Text style={styles.modalTitle}>
-                  {!this.state.selectedMovie?.title
-                    ? 'Welcome to Flix Picks!'
-                    : entities.decode(this.state.selectedMovie?.title)}
-                </Text>
-                <Text numberOfLines={6} style={styles.synopsis}>
-                  {!this.state.selectedMovie?.synopsis
-                    ? 'The bets movie matching out there'
-                    : entities.decode(this.state.selectedMovie?.synopsis)}
-                </Text>
-              </View>
-            </View>
-          </View>
-        </Modal>
+        <MovieDetailsModal
+          selectedMovie={this.state.selectedMovie}
+          modalVisible={this.state.movieDetailsModalOpen}
+          setModalVisible={this.setMovieDetailsModalVisible}
+        />
+        <AddGroupModal
+          modalVisible={this.state.addGroupModal}
+          setModalVisible={this.setAddGroupModalVisible}
+          friends={this.state.friends.map((friend) => ({
+            id: friend.id.toString(),
+            name: this.friendName(friend),
+          }))}
+        />
       </View>
     );
   }
@@ -417,37 +410,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingRight: 10,
   },
-  centeredView: {
-    flex: 1,
-    alignItems: 'center',
-    paddingTop: 35,
-    paddingBottom: 35,
-  },
-  modalView: {
-    backgroundColor: '#333333',
-    borderRadius: 20,
-    padding: 15,
-    width: 350,
-    height: 650,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-
-  modalTitle: {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 25,
-    paddingTop: 10,
-    backgroundColor: 'transparent',
-  },
   textStyle: {
     color: 'white',
     fontWeight: 'bold',
@@ -455,17 +417,6 @@ const styles = StyleSheet.create({
   },
   spinnerTextStyle: {
     color: '#FFF',
-  },
-  textContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  synopsis: {
-    textAlign: 'center',
-    color: '#ccc',
-    paddingTop: 10,
-    fontSize: 20,
-    backgroundColor: 'transparent',
   },
   modalText: {
     marginBottom: 15,
