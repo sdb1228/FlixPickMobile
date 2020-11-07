@@ -158,27 +158,41 @@ class MyStack extends React.Component {
                   height: 0,
                 },
               },
-              // headerRight: () => (
-              // <Icon
-              // onPress={() => alert('This search')}
-              // name="search-outline"
-              // size={35}
-              // color="white"
-              // style={styles.searchIcon}
-              // />
-              // ),
             }}
             name="Home"
             component={HomeScreen}
           />
           <Stack.Screen
             options={{
+              title: '',
               headerLeft: () => <View />,
+              headerTintColor: 'white',
+              headerStyle: {
+                backgroundColor: '#333333',
+                shadowRadius: 0,
+                shadowOffset: {
+                  height: 0,
+                },
+              },
             }}
             name="Login"
             component={LoginScreen}
           />
-          <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+          <Stack.Screen
+            options={{
+              title: '',
+              headerTintColor: 'white',
+              headerStyle: {
+                backgroundColor: '#333333',
+                shadowRadius: 0,
+                shadowOffset: {
+                  height: 0,
+                },
+              },
+            }}
+            name="CreateAccount"
+            component={CreateAccountScreen}
+          />
           <Stack.Screen
             options={{
               title: '',

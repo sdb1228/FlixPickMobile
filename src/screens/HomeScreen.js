@@ -7,7 +7,10 @@ import TinderCard from './TinderCard';
 
 export default class HomeScreen extends React.Component {
   componentDidUpdate() {
-    if (this.props?.route?.params?.status) {
+    if (
+      this.props?.route?.params?.status &&
+      this.state.movieLoadingErrorMessage !== 'Unauthorized'
+    ) {
       if (!this.state.loadingMovies && !this.state.movies.length > 0) {
         this.loadMovies();
       }
@@ -28,6 +31,7 @@ export default class HomeScreen extends React.Component {
       .then((res) => {
         this.setState({
           movies: res.data,
+          movieLoadingErrorMessage: null,
         });
       })
       .catch(this.handleUserLoadingError);
@@ -37,6 +41,7 @@ export default class HomeScreen extends React.Component {
     if (res.message.includes('401')) {
       this.setState({
         loadingMovies: false,
+        movieLoadingErrorMessage: 'Unauthorized',
       });
       this.props.navigation.navigate('Login');
     } else {
