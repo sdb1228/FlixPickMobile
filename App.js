@@ -5,6 +5,8 @@ import {StyleSheet, View, Modal, TextInput, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Icon from 'react-native-vector-icons/Ionicons';
+import FlashMessage, {showMessage} from 'react-native-flash-message';
+
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import CreateAccountScreen from './src/screens/CreateAccountScreen';
@@ -22,6 +24,7 @@ class MyStack extends React.Component {
     addFriendLoading: false,
     addFriendError: '',
     currentUser: null,
+    addFriendEmailError: null,
   };
 
   componentDidMount() {
@@ -42,7 +45,12 @@ class MyStack extends React.Component {
   }
 
   setModalVisible = (visible) => {
-    this.setState({modalVisible: visible});
+    this.setState({
+      modalVisible: visible,
+      addFriendError: null,
+      addFriendEmailError: null,
+      addFriendEmail: '',
+    });
   };
 
   closeControlPanel = () => {
@@ -53,17 +61,41 @@ class MyStack extends React.Component {
     this._drawer.open();
   };
 
+  validateEmail = (text) => {
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (reg.test(text) === false) {
+      this.setState({
+        addFriendEmail: text,
+        addFriendEmailError: 'Email is incorrect',
+      });
+      return false;
+    } else {
+      this.setState({addFriendEmail: text, addFriendEmailError: null});
+    }
+  };
+
   sendFriendRequest = () => {
+    if (
+      this.state.addFriendEmailError ||
+      this.state.addFriendEmail.length === 0
+    ) {
+      return;
+    }
     this.setState({addFriendLoading: true});
     addFriend(this.state.addFriendEmail)
       .then(() => {
-        this.setState({addFriendLoading: false});
+        this.setState({addFriendLoading: false, modalVisible: false});
       })
       .catch((error) => {
         if (error.message.includes('401')) {
           this.setState({addFriendError: error, addFriendLoading: false});
           navigationRef.current?.navigate('Login');
         } else {
+          showMessage({
+            message:
+              'Something went wrong when adding a friend.  Please try again later',
+            type: 'danger',
+          });
           this.setState({addFriendError: error, addFriendLoading: false});
         }
       });
@@ -198,7 +230,7 @@ class MyStack extends React.Component {
               <View style={{flexDirection: 'row'}}>
                 <TextInput
                   style={styles.addFriendInput}
-                  onChangeText={(text) => this.setState({addFriendEmail: text})}
+                  onChangeText={(text) => this.validateEmail(text)}
                   value={this.state.addFriendEmail}
                   placeholder="Email Address"
                   placeholderTextColor="grey"
@@ -207,7 +239,6 @@ class MyStack extends React.Component {
                 <Icon
                   onPress={() => {
                     this.sendFriendRequest();
-                    this.setModalVisible(!modalVisible);
                   }}
                   name="send"
                   size={20}
@@ -215,6 +246,9 @@ class MyStack extends React.Component {
                   style={styles.sendButton}
                 />
               </View>
+              {this.state.addFriendEmailError && (
+                <Text style={styles.invalidEmailText}>Invalid Email</Text>
+              )}
             </View>
           </View>
         </Modal>
@@ -227,6 +261,7 @@ export default function App() {
   return (
     <NavigationContainer ref={navigationRef}>
       <MyStack />
+      <FlashMessage position="top" />
     </NavigationContainer>
   );
 }
@@ -255,6 +290,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingTop: 150,
+  },
+  invalidEmailText: {
+    color: 'red',
+    marginTop: 10,
+    fontWeight: 'bold',
   },
   modalView: {
     backgroundColor: '#333333',

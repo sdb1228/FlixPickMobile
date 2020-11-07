@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Spinner from 'react-native-loading-spinner-overlay';
+import {showMessage} from 'react-native-flash-message';
 import {
   StyleSheet,
   TextInput,
@@ -15,15 +16,48 @@ class AddGroupModal extends Component {
   state = {
     selectedItems: [],
     groupName: '',
+    groupNameError: null,
+    selectedFriendsError: null,
   };
 
   onSelectedItemsChange = (selectedItems) => {
-    this.setState({selectedItems});
+    this.setState({selectedItems, selectedFriendsError: null});
+  };
+
+  createGroup = () => {
+    if (
+      this.state.groupName.length === 0 &&
+      this.state.selectedItems.length === 0
+    ) {
+      showMessage({
+        message: 'Group name and friends are required to make a group',
+        type: 'danger',
+      });
+      this.setState({
+        selectedFriendsError: 'You Must Select Friends',
+        groupNameError: 'Group name must not be blank',
+      });
+    } else if (this.state.groupName.length === 0) {
+      showMessage({
+        message: 'Group name is required to make a group',
+        type: 'danger',
+      });
+      this.setState({
+        groupNameError: 'Group name must not be blank',
+      });
+    } else if (this.state.selectedItems.length === 0) {
+      showMessage({
+        message: 'Friends are required to make a group',
+        type: 'danger',
+      });
+      this.setState({
+        selectedFriendsError: 'You Must Select Friends',
+      });
+    }
   };
 
   render() {
     const {selectedItems} = this.state;
-    console.log(this.props.friends);
     return (
       <Modal animationType="fade" transparent visible={this.props.modalVisible}>
         <Spinner
@@ -45,8 +79,14 @@ class AddGroupModal extends Component {
             </View>
             <Text style={styles.modalText}>Add Group</Text>
             <TextInput
-              style={styles.groupNameInput}
-              onChangeText={(text) => this.setState({groupName: text})}
+              style={
+                this.state.groupNameError
+                  ? styles.groupNameInputError
+                  : styles.groupNameInput
+              }
+              onChangeText={(text) =>
+                this.setState({groupName: text, groupNameError: null})
+              }
               value={this.state.groupName}
               placeholder="Group Name"
               placeholderTextColor="grey"
@@ -70,6 +110,14 @@ class AddGroupModal extends Component {
                 selectedItemIconColor="#b9b9b9"
                 hideDropdown
                 itemTextColor="#000"
+                styleDropdownMenuSubsection={
+                  this.state.selectedFriendsError
+                    ? {
+                        borderWidth: 2,
+                        borderColor: 'red',
+                      }
+                    : null
+                }
                 searchInputStyle={{
                   color: 'black',
                   height: 50,
@@ -82,8 +130,7 @@ class AddGroupModal extends Component {
               {this.multiSelect?.getSelectedItemsExt(selectedItems)}
               <TouchableOpacity
                 onPress={() => {
-                  this.sendFriendRequest();
-                  this.setModalVisible(!this.props.modalVisible);
+                  this.createGroup();
                 }}>
                 <View
                   style={{
@@ -129,6 +176,7 @@ const styles = StyleSheet.create({
   modalView: {
     backgroundColor: '#333333',
     borderRadius: 20,
+    marginTop: 85,
     padding: 15,
     width: 350,
     minHeight: 450,
@@ -162,14 +210,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   groupNameInput: {
-    borderBottomWidth: 1,
     color: 'black',
     backgroundColor: 'white',
     height: 40,
-    borderColor: 'white',
     width: '75%',
     marginRight: 10,
     marginBottom: 30,
+  },
+  groupNameInputError: {
+    color: 'black',
+    backgroundColor: 'white',
+    height: 40,
+    width: '75%',
+    marginRight: 10,
+    marginBottom: 30,
+    borderWidth: 2,
+    borderColor: 'red',
   },
 });
 
