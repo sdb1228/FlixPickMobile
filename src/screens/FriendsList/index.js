@@ -50,6 +50,12 @@ export default class FriendsList extends Component {
     }
   };
 
+  friend = (relationship) => {
+    return relationship.second_user
+      ? relationship.second_user
+      : relationship.first_user;
+  };
+
   loadFriends() {
     this.setState({
       loadingFriends: true,
@@ -102,6 +108,12 @@ export default class FriendsList extends Component {
     return false;
   };
 
+  addedGroup = (group) => {
+    this.setState(function (prevState) {
+      return {groups: prevState.groups.concat(group), addGroupModal: false};
+    });
+  };
+
   friendName = (relationship) => {
     return relationship.second_user
       ? relationship.second_user.display_name
@@ -149,12 +161,13 @@ export default class FriendsList extends Component {
             isActive ? styles.headerContainerSelected : styles.headerContainer
           }>
           <Text style={styles.friendName}>{section.name}</Text>
-          <View
-            style={
-              this.shouldRenderActionButtons(section)
-                ? styles.actionButtons
-                : styles.movieCount
-            }>
+          <View style={styles.movieCount}>
+            <Icon
+              name="people-outline"
+              size={35}
+              color="white"
+              style={{paddingRight: 10}}
+            />
             <Text style={styles.movieCountText}>
               {`${section.same_liked_movies.length} Matched`}
             </Text>
@@ -167,15 +180,7 @@ export default class FriendsList extends Component {
         style={
           isActive ? styles.headerContainerSelected : styles.headerContainer
         }>
-        <Text style={styles.friendName}>
-          {section.second_user
-            ? section.second_user.display_name
-              ? section.second_user.display_name
-              : section.second_user.email
-            : section.first_user.display_name
-            ? section.first_user.display_name
-            : section.first_user.email}
-        </Text>
+        <Text style={styles.friendName}>{this.friendName(section)}</Text>
         <View
           style={
             this.shouldRenderActionButtons(section)
@@ -267,6 +272,7 @@ export default class FriendsList extends Component {
   };
 
   render() {
+    console.log(this.state.groups);
     return (
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{paddingTop: 30}}>
@@ -337,8 +343,11 @@ export default class FriendsList extends Component {
         <AddGroupModal
           modalVisible={this.state.addGroupModal}
           setModalVisible={this.setAddGroupModalVisible}
+          navigation={this.props.navigation}
+          groupAdded={this.addedGroup}
+          currentUser={this.props.route.params.currentUser.id}
           friends={this.state.friends.map((friend) => ({
-            id: friend.id.toString(),
+            id: this.friend(friend).id.toString(),
             name: this.friendName(friend),
           }))}
         />
@@ -406,9 +415,11 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   movieCount: {
+    flexDirection: 'row',
     flex: 1,
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingRight: 10,
+    paddingRight: 40,
   },
   textStyle: {
     color: 'white',

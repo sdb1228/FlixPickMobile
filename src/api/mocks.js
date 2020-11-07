@@ -17,6 +17,19 @@ export const login = (email, password) => {
   });
 };
 
+export const createGroup = (name, participants) => {
+  return axios({
+    method: 'post',
+    url: 'groups',
+    data: {
+      group: {
+        group_name: name,
+        participants,
+      },
+    },
+  });
+};
+
 export const userMovieReaction = (movieId, reaction) => {
   return axios({
     method: 'post',

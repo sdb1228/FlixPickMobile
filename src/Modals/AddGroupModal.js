@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import MultiSelect from 'react-native-multiple-select';
+import {createGroup} from '../../src/api/mocks';
 
 class AddGroupModal extends Component {
   state = {
@@ -18,6 +19,7 @@ class AddGroupModal extends Component {
     groupName: '',
     groupNameError: null,
     selectedFriendsError: null,
+    createGroupLoading: false,
   };
 
   onSelectedItemsChange = (selectedItems) => {
@@ -53,6 +55,32 @@ class AddGroupModal extends Component {
       this.setState({
         selectedFriendsError: 'You Must Select Friends',
       });
+    } else {
+      this.setState({createGroupLoading: true});
+      createGroup(
+        this.state.groupName,
+        this.state.selectedItems
+          .map((friendId) => parseInt(friendId))
+          .concat(this.props.currentUser),
+      )
+        .then((res) => {
+          this.setState({createGroupLoading: false}, () =>
+            this.props.groupAdded(res.data),
+          );
+        })
+        .catch((error) => {
+          if (error.message.includes('401')) {
+            this.setState({addFriendError: error, createGroupLoading: false});
+            this.props.navigation.navigate('Login');
+          } else {
+            showMessage({
+              message:
+                'Something went wrong when adding a friend.  Please try again later',
+              type: 'danger',
+            });
+            this.setState({addFriendError: error, createGroupLoading: false});
+          }
+        });
     }
   };
 
@@ -61,7 +89,7 @@ class AddGroupModal extends Component {
     return (
       <Modal animationType="fade" transparent visible={this.props.modalVisible}>
         <Spinner
-          visible={this.props.addFriendLoading}
+          visible={this.state.createGroupLoading}
           textContent={'Creating Group...'}
           textStyle={styles.spinnerTextStyle}
         />
