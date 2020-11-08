@@ -58,6 +58,22 @@ class MyStack extends React.Component {
   };
 
   openControlPanel = () => {
+    if (!this.currentUser) {
+      if (!this.state.currentUser) {
+        getCurrentUser()
+          .then((res) => {
+            this.setState({currentUser: res.data});
+          })
+          .catch((error) => {
+            if (error.message.includes('401')) {
+              this.setState({addFriendError: error, addFriendLoading: false});
+              navigationRef.current?.navigate('Login');
+            } else {
+              this.setState({addFriendError: error, addFriendLoading: false});
+            }
+          });
+      }
+    }
     this._drawer.open();
   };
 
