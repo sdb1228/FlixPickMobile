@@ -6,12 +6,12 @@ import {getHome, userMovieReaction} from '../api/mocks';
 import TinderCard from './TinderCard';
 
 export default class HomeScreen extends React.Component {
-  componentDidUpdate() {
-    if (
-      this.props?.route?.params?.status &&
-      this.state.movieLoadingErrorMessage !== 'Unauthorized'
-    ) {
-      if (!this.state.loadingMovies && !this.state.movies.length > 0) {
+  componentDidUpdate(_, prevState) {
+    if (this.props?.route?.params?.status) {
+      if (
+        (!this.state.loadingMovies && !this.state.movies.length > 0) ||
+        this.props?.route?.params?.data?.email !== prevState.currentUser
+      ) {
         this.loadMovies();
       }
     }
@@ -23,30 +23,37 @@ export default class HomeScreen extends React.Component {
     }
   }
 
-  state = {movies: [], movieLoadingErrorMessage: ''};
+  state = {movies: [], movieLoadingErrorMessage: '', currentUser: 0};
 
-  loadMovies() {
-    this.setState({movieLoadingErrorMessage: '', loadingMovies: true});
+  loadMovies = () => {
+    this.setState({
+      movieLoadingErrorMessage: '',
+      loadingMovies: true,
+      currentUser: this.props?.route?.params?.data?.email,
+    });
     getHome()
       .then((res) => {
         this.setState({
           movies: res.data,
           movieLoadingErrorMessage: null,
+          currentUser: this.props?.route?.params?.data?.email,
+          loadingMovies: false,
         });
       })
       .catch(this.handleUserLoadingError);
-  }
+  };
 
   handleUserLoadingError = (res) => {
     if (res.message.includes('401')) {
       this.setState({
         loadingMovies: false,
+        movies: [],
         movieLoadingErrorMessage: 'Unauthorized',
       });
       this.props.navigation.navigate('Login');
     } else {
       this.setState({
-        hasLoadedMovies: false,
+        movies: [],
         loadingMovies: false,
         movieLoadingErrorMessage: res.message,
       });

@@ -4,12 +4,10 @@ import {
   View,
   StyleSheet,
   TextInput,
-  Button,
   Text,
   TouchableOpacity,
 } from 'react-native';
 import {createAccount} from '../api/mocks';
-import {setToken} from '../api/token';
 
 const CreateAccount = ({navigation}) => {
   const [displayName, onChangeDisplayName] = useState('');
@@ -20,9 +18,7 @@ const CreateAccount = ({navigation}) => {
   const submit = () => {
     createAccount(email, password)
       .then(async (res) => {
-        console.log(res.data.auth_token);
-        await setToken(res.data.auth_token);
-        navigation.navigate('Home');
+        navigation.navigate('Home', res);
       })
       .catch((res) => {
         console.log(res);
@@ -68,9 +64,7 @@ const CreateAccount = ({navigation}) => {
           }}>
           {errorMessage ? <Text>{errorMessage}</Text> : null}
         </View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('CreateAccount')}>
+        <TouchableOpacity style={styles.button} onPress={submit}>
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
             Create Account
           </Text>

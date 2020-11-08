@@ -272,7 +272,6 @@ export default class FriendsList extends Component {
   };
 
   render() {
-    console.log(this.state.groups);
     return (
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{paddingTop: 30}}>

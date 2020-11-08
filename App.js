@@ -118,6 +118,15 @@ class MyStack extends React.Component {
   };
 
   logOut = () => {
+    this.setState({
+      modalVisible: false,
+      addFriendEmail: '',
+      addFriendLoading: false,
+      addFriendError: '',
+      currentUser: null,
+      addFriendEmailError: null,
+    });
+
     logout();
     this.closeControlPanel();
     navigationRef.current?.navigate('Login');

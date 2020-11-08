@@ -60,6 +60,7 @@ export const createAccount = (email, password, displayName) => {
   return axios({
     method: 'post',
     url: '/users.json',
+    headers: {'User-Agent': 'flixpick-mobile'},
     data: {
       user: {
         email: email,

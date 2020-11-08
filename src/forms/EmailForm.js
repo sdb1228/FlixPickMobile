@@ -7,9 +7,10 @@ import {
   Button,
   Text,
   Linking,
+  TouchableOpacity,
 } from 'react-native';
 
-const EmailForm = ({buttonText, onSubmit, children, onAuthentication}) => {
+const EmailForm = ({buttonText, onSubmit, onAuthentication, navigation}) => {
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -56,7 +57,7 @@ const EmailForm = ({buttonText, onSubmit, children, onAuthentication}) => {
             color="white"
             style={{borderWidth: 2, borderColor: 'white'}}
             title={buttonText}
-            onPress={submit}
+            onPress={() => navigation.navigate('CreateAccount')}
           />
           <Button
             color="white"
@@ -67,7 +68,11 @@ const EmailForm = ({buttonText, onSubmit, children, onAuthentication}) => {
             }
           />
         </View>
-        {children}
+        <TouchableOpacity style={styles.button} onPress={submit}>
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
+            Login
+          </Text>
+        </TouchableOpacity>
         {errorMessage ? <Text>{errorMessage}</Text> : null}
       </View>
     </ScrollView>
@@ -94,6 +99,13 @@ const styles = StyleSheet.create({
     height: 40,
     width: 300,
     marginTop: 20,
+  },
+
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#c00913',
+    padding: 10,
+    marginTop: 30,
   },
 });
 
