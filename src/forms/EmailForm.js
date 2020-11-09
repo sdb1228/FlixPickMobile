@@ -9,6 +9,7 @@ import {
   Linking,
   TouchableOpacity,
 } from 'react-native';
+import {showMessage} from 'react-native-flash-message';
 
 const EmailForm = ({buttonText, onSubmit, onAuthentication, navigation}) => {
   const [email, onChangeEmail] = useState('');
@@ -20,8 +21,19 @@ const EmailForm = ({buttonText, onSubmit, onAuthentication, navigation}) => {
       .then((res) => {
         onAuthentication(res);
       })
-      .catch((res) => {
-        setErrorMessage(res.data.error);
+      .catch((error) => {
+        if (error.message.includes('401')) {
+          showMessage({
+            message: 'Password or Email incorrect',
+            type: 'danger',
+          });
+          setErrorMessage();
+        } else {
+          showMessage({
+            message: error.message,
+            type: 'danger',
+          });
+        }
       });
   };
 
@@ -100,7 +112,6 @@ const styles = StyleSheet.create({
     width: 300,
     marginTop: 20,
   },
-
   button: {
     alignItems: 'center',
     backgroundColor: '#c00913',

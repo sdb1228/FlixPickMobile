@@ -11,6 +11,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import CreateAccountScreen from './src/screens/CreateAccountScreen';
 import FriendsList from './src/screens/FriendsList';
+import SettingsScreen from './src/screens/SettingsScreen';
 import HamburgerContent from './src/screens/HamburgerContent';
 import {logout, addFriend, getCurrentUser} from './src/api/mocks';
 
@@ -58,21 +59,19 @@ class MyStack extends React.Component {
   };
 
   openControlPanel = () => {
-    if (!this.currentUser) {
-      if (!this.state.currentUser) {
-        getCurrentUser()
-          .then((res) => {
-            this.setState({currentUser: res.data});
-          })
-          .catch((error) => {
-            if (error.message.includes('401')) {
-              this.setState({addFriendError: error, addFriendLoading: false});
-              navigationRef.current?.navigate('Login');
-            } else {
-              this.setState({addFriendError: error, addFriendLoading: false});
-            }
-          });
-      }
+    if (!this.state.currentUser) {
+      getCurrentUser()
+        .then((res) => {
+          this.setState({currentUser: res.data});
+        })
+        .catch((error) => {
+          if (error.message.includes('401')) {
+            this.setState({addFriendError: error, addFriendLoading: false});
+            navigationRef.current?.navigate('Login');
+          } else {
+            this.setState({addFriendError: error, addFriendLoading: false});
+          }
+        });
     }
     this._drawer.open();
   };
@@ -124,6 +123,12 @@ class MyStack extends React.Component {
         break;
       case 'FriendsList':
         navigationRef.current?.navigate('FriendsList', {
+          currentUser: this.state.currentUser,
+        });
+        this.closeControlPanel();
+        break;
+      case 'Settings':
+        navigationRef.current?.navigate('Settings', {
           currentUser: this.state.currentUser,
         });
         this.closeControlPanel();
@@ -202,6 +207,23 @@ class MyStack extends React.Component {
             }}
             name="Login"
             component={LoginScreen}
+          />
+          <Stack.Screen
+            options={{
+              title: '',
+              headerTintColor: 'white',
+              headerBackTitle: ' ',
+              headerStyle: {
+                backgroundColor: '#141414',
+                shadowRadius: 0,
+                shadowOffset: {
+                  height: 0,
+                },
+              },
+              headerLeftContainerStyle: styles.settingsIcon,
+            }}
+            name="Settings"
+            component={SettingsScreen}
           />
           <Stack.Screen
             options={{

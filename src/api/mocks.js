@@ -17,6 +17,10 @@ export const login = (email, password) => {
   });
 };
 
+export const updateUser = (id, user) => {
+  return axios.put(`/users/${id}`, user);
+};
+
 export const createGroup = (name, participants) => {
   return axios({
     method: 'post',
