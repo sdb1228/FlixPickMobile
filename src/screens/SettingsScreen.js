@@ -11,7 +11,7 @@ import {
 import {showMessage} from 'react-native-flash-message';
 import {updateUser} from '../api/mocks';
 
-const Settings = (props) => {
+const SettingsScreen = (props) => {
   const [email, setEmail] = useState(props.route.params.currentUser.email);
   const [displayName, setDisplayName] = useState(
     props.route.params.currentUser.display_name,
@@ -19,7 +19,6 @@ const Settings = (props) => {
   const [password, setPassword] = useState();
   const [passwordConfirmation, setPasswordConfirmation] = useState();
   const [unlikedMovieIds, setUnlikedMovieIds] = useState([]);
-  const [showLikedMovies, setShowLikedMovies] = useState(false);
 
   const handleSubmit = () => {
     const user = {
@@ -57,6 +56,13 @@ const Settings = (props) => {
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Text style={styles.loginTitle}>Settings</Text>
         </View>
+        <TouchableOpacity
+          style={styles.likedMoviesButton}
+          onPress={handleSubmit}>
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
+            Liked Movies
+          </Text>
+        </TouchableOpacity>
         <View style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}>
           <View style={styles.rowContainer}>
             <Text style={styles.label}>Email:</Text>
@@ -148,5 +154,12 @@ const styles = StyleSheet.create({
     width: 200,
     marginTop: 30,
   },
+  likedMoviesButton: {
+    alignItems: 'center',
+    backgroundColor: '#831010',
+    padding: 10,
+    width: 200,
+    marginTop: 30,
+  },
 });
-export default Settings;
+export default SettingsScreen;

@@ -7,6 +7,7 @@ const HamburgerContent = ({onHamburgerMenuItemClick}) => (
       scrollEnabled={false}
       data={[
         {key: 'FriendsList', value: 'Friends List'},
+        {key: 'LikedMovies', value: 'Liked Movies'},
         {key: 'Settings', value: 'Settings'},
         {key: 'Logout', value: 'Logout'},
       ]}
@@ -14,7 +15,7 @@ const HamburgerContent = ({onHamburgerMenuItemClick}) => (
         <TouchableOpacity
           style={styles.listItemContainer}
           onPress={() => onHamburgerMenuItemClick(item.key)}>
-          <Text style={styles.synopsis}>{item.key}</Text>
+          <Text style={styles.synopsis}>{item.value}</Text>
         </TouchableOpacity>
       )}
     />

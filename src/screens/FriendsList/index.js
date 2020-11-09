@@ -215,7 +215,7 @@ export default class FriendsList extends Component {
     );
   };
 
-  renderContent = (section, _, isActive) => {
+  renderContent = (section) => {
     return (
       <View
         style={{

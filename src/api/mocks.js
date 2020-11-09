@@ -21,6 +21,14 @@ export const updateUser = (id, user) => {
   return axios.put(`/users/${id}`, user);
 };
 
+export const getLikedMovies = () => {
+  return axios.get(`/liked_movies`);
+};
+
+export const unlikeMovie = (movie) => {
+  return axios.delete(`/movie_reactions/${movie.movie_reaction_id}`);
+};
+
 export const createGroup = (name, participants) => {
   return axios({
     method: 'post',
