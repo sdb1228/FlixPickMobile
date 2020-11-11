@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ptg-s3-aHh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="flixpick_1536x1536_transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ptg-s3-aHh">
                                 <rect key="frame" x="67" y="269" width="240" height="128"/>
                             </imageView>
                         </subviews>
@@ -35,4 +35,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="flixpick_1536x1536_transparent.png" width="1536" height="1536"/>
+    </resources>
 </document>

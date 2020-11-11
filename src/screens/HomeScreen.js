@@ -78,7 +78,7 @@ export default class HomeScreen extends React.Component {
         translucent={true}
         isLoaded={this.state.isLoaded}
         logoImage={require('../assets/logo.png')}
-        backgroundColor={'#262626'}
+        backgroundColor={'#141414'}
         logoHeight={150}
         logoWidth={150}>
         <View style={styles.rootContainer}>
