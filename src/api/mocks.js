@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
 axios.defaults.baseURL = URL;
 
 export const login = (email, password) => {
