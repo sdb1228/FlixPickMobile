@@ -14,6 +14,7 @@ import FriendsList from './src/screens/FriendsList';
 import SettingsScreen from './src/screens/SettingsScreen';
 import LikedMoviesScreen from './src/screens/LikedMoviesScreen';
 import HamburgerContent from './src/screens/HamburgerContent';
+import SearchScreen from './src/screens/SearchScreen';
 import {logout, addFriend, getCurrentUser} from './src/api/mocks';
 
 const Stack = createStackNavigator();
@@ -187,6 +188,15 @@ class MyStack extends React.Component {
                   style={styles.settingsIcon}
                 />
               ),
+              headerRight: () => (
+                <Icon
+                  onPress={() => navigationRef.current?.navigate('Search')}
+                  name="search-outline"
+                  size={35}
+                  color="white"
+                  style={styles.searchIcon}
+                />
+              ),
               headerTintColor: 'white',
               headerStyle: {
                 backgroundColor: '#141414',
@@ -198,6 +208,21 @@ class MyStack extends React.Component {
             }}
             name="Home"
             component={HomeScreen}
+          />
+          <Stack.Screen
+            options={{
+              title: '',
+              headerTintColor: 'white',
+              headerStyle: {
+                backgroundColor: '#141414',
+                shadowRadius: 0,
+                shadowOffset: {
+                  height: 0,
+                },
+              },
+            }}
+            name="Search"
+            component={SearchScreen}
           />
           <Stack.Screen
             options={{

@@ -99,6 +99,13 @@ export const getCurrentUser = () => {
   });
 };
 
+export const getAllMovies = (searchTerm) => {
+  return axios({
+    method: 'get',
+    url: `/movies.json?title=${searchTerm}`,
+  });
+};
+
 export const logout = () => {
   return axios({
     method: 'delete',
