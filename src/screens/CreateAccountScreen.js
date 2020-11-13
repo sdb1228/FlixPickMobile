@@ -18,7 +18,7 @@ const CreateAccount = ({navigation}) => {
   const submit = () => {
     createAccount(email, password)
       .then(async (res) => {
-        navigation.navigate('Home', res);
+        navigation.navigate('NewUserTutorial', res);
       })
       .catch((res) => {
         console.log(res);

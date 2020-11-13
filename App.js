@@ -15,6 +15,7 @@ import SettingsScreen from './src/screens/SettingsScreen';
 import LikedMoviesScreen from './src/screens/LikedMoviesScreen';
 import HamburgerContent from './src/screens/HamburgerContent';
 import SearchScreen from './src/screens/SearchScreen';
+import NewUserTutorialScreen from './src/screens/NewUserTutorialScreen';
 import {logout, addFriend, getCurrentUser} from './src/api/mocks';
 
 const Stack = createStackNavigator();
@@ -239,6 +240,22 @@ class MyStack extends React.Component {
             }}
             name="Login"
             component={LoginScreen}
+          />
+          <Stack.Screen
+            options={{
+              title: '',
+              headerLeft: () => <View />,
+              headerTintColor: 'white',
+              headerStyle: {
+                backgroundColor: '#333333',
+                shadowRadius: 0,
+                shadowOffset: {
+                  height: 0,
+                },
+              },
+            }}
+            name="NewUserTutorial"
+            component={NewUserTutorialScreen}
           />
           <Stack.Screen
             options={{
