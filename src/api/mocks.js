@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:3000';
 // const URL = 'http://localhost:3000';
+const URL = 'https://www.flixpick.fun';
 axios.defaults.baseURL = URL;
 
 export const login = (email, password) => {
   return axios({
     method: 'post',
     headers: {'User-Agent': 'flixpick-mobile'},
-    url: 'users/sign_in.json',
+    url: '/users/sign_in.json',
     data: {
       user: {
         email: email,
@@ -33,7 +33,7 @@ export const unlikeMovie = (movie) => {
 export const createGroup = (name, participants) => {
   return axios({
     method: 'post',
-    url: 'groups',
+    url: '/groups',
     data: {
       group: {
         group_name: name,
@@ -110,7 +110,7 @@ export const logout = () => {
   return axios({
     method: 'delete',
     'Content-Type': 'application/json',
-    url: 'users/sign_out',
+    url: '/users/sign_out',
   });
 };
 

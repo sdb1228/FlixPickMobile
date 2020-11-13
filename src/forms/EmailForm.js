@@ -65,20 +65,22 @@ const EmailForm = ({buttonText, onSubmit, onAuthentication, navigation}) => {
             justifyContent: 'space-between',
             marginTop: 20,
           }}>
-          <Button
+          <TouchableOpacity
             color="white"
-            style={{borderWidth: 2, borderColor: 'white'}}
-            title={buttonText}
-            onPress={() => navigation.navigate('CreateAccount')}
-          />
-          <Button
+            onPress={() => navigation.navigate('CreateAccount')}>
+            <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
+              {buttonText}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
             color="white"
-            style={{borderWidth: 2, borderColor: 'white'}}
-            title="Forgot Password"
             onPress={() =>
               Linking.openURL('https://www.flixpick.fun/forgot_password.user')
-            }
-          />
+            }>
+            <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
+              Forgot Password
+            </Text>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity style={styles.button} onPress={submit}>
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
