@@ -43,26 +43,12 @@ const SettingsScreen = (props) => {
       });
   };
 
-  const unlikeMovie = (movie) => {
-    axios
-      .delete(`/movie_reactions/${movie.movie_reaction_id}`)
-      .then(() => setUnlikedMovieIds([...unlikedMovieIds, movie.id]))
-      .catch((err) => console.log('TODO: error handling'));
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{paddingTop: 30}}>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Text style={styles.loginTitle}>Settings</Text>
         </View>
-        <TouchableOpacity
-          style={styles.likedMoviesButton}
-          onPress={handleSubmit}>
-          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
-            Liked Movies
-          </Text>
-        </TouchableOpacity>
         <View style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}>
           <View style={styles.rowContainer}>
             <Text style={styles.label}>Email:</Text>
