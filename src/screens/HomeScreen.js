@@ -109,7 +109,11 @@ export default class HomeScreen extends React.Component {
   handleUserSwipe = (cardIndex, reaction) => {
     const movie = this.state.movies
       .filter(this.genreFilter)
-      .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))[cardIndex];
+      .sort(
+        (a, b) =>
+          (b.top_ten ? parseFloat(b.rating) + 2 : parseFloat(b.rating)) -
+          (a.top_ten ? parseFloat(a.rating) + 2 : parseFloat(a.rating)),
+      )[cardIndex];
 
     userMovieReaction(movie.id, reaction);
   };
@@ -232,7 +236,13 @@ export default class HomeScreen extends React.Component {
                 movies
                   .filter(this.genreFilter)
                   .sort(
-                    (a, b) => parseFloat(b.rating) - parseFloat(a.rating),
+                    (a, b) =>
+                      (b.top_ten
+                        ? parseFloat(b.rating) + 2
+                        : parseFloat(b.rating)) -
+                      (a.top_ten
+                        ? parseFloat(a.rating) + 2
+                        : parseFloat(a.rating)),
                   ) || []
               }
               renderCard={(card) => {
