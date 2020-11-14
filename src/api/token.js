@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const getToken = async () => {
   try {
@@ -11,9 +11,9 @@ export const getToken = async () => {
   }
 };
 
-export const setToken = async (token) => {
+export const setToken = async (cookie) => {
   try {
-    await AsyncStorage.setItem('@auth_token', token);
+    await AsyncStorage.setItem('@auth_token', cookie);
   } catch (e) {
     return null;
   }

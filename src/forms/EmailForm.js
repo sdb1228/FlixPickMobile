@@ -4,11 +4,11 @@ import {
   StyleSheet,
   View,
   TextInput,
-  Button,
   Text,
   Linking,
   TouchableOpacity,
 } from 'react-native';
+import {setToken} from '../api/token';
 import {showMessage} from 'react-native-flash-message';
 
 const EmailForm = ({buttonText, onSubmit, onAuthentication, navigation}) => {
@@ -18,7 +18,8 @@ const EmailForm = ({buttonText, onSubmit, onAuthentication, navigation}) => {
 
   const submit = () => {
     onSubmit(email, password)
-      .then((res) => {
+      .then(async (res) => {
+        await setToken(res.headers['set-cookie'][0]);
         onAuthentication(res);
       })
       .catch((error) => {
@@ -40,7 +41,7 @@ const EmailForm = ({buttonText, onSubmit, onAuthentication, navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={styles.loginTitle}>FlickPix</Text>
+        <Text style={styles.loginTitle}>FlixPick</Text>
       </View>
       <View style={{flex: 2}}>
         <TextInput

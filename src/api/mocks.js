@@ -1,7 +1,8 @@
 import axios from 'axios';
+import {getToken} from '../api/token';
 
-// const URL = 'http://localhost:3000';
-const URL = 'https://www.flixpick.fun';
+const URL = 'http://localhost:3000';
+// const URL = 'https://www.flixpick.fun';
 axios.defaults.baseURL = URL;
 
 export const login = (email, password) => {
@@ -85,10 +86,10 @@ export const createAccount = (email, password, displayName) => {
   });
 };
 
-export const getHome = () => {
+export const getHome = (limit) => {
   return axios({
     method: 'get',
-    url: '/home.json',
+    url: `/home.json?limit=${limit}`,
   });
 };
 

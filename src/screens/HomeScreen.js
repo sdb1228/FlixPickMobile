@@ -69,7 +69,7 @@ export default class HomeScreen extends React.Component {
       loadingMovies: true,
       currentUser: this.props?.route?.params?.data?.email,
     });
-    getHome()
+    getHome(300)
       .then((res) => {
         this.setState({
           isLoaded: true,
@@ -77,6 +77,11 @@ export default class HomeScreen extends React.Component {
           movieLoadingErrorMessage: null,
           currentUser: this.props?.route?.params?.data?.email,
           loadingMovies: false,
+        });
+        getHome(0).then((res) => {
+          this.setState({
+            movies: res.data,
+          });
         });
       })
       .catch(this.handleUserLoadingError);
@@ -87,6 +92,7 @@ export default class HomeScreen extends React.Component {
       this.setState({
         loadingMovies: false,
         movies: [],
+        isLoaded: false,
         movieLoadingErrorMessage: 'Unauthorized',
       });
       this.props.navigation.navigate('Login');
@@ -94,6 +100,7 @@ export default class HomeScreen extends React.Component {
       this.setState({
         movies: [],
         loadingMovies: false,
+        isLoaded: false,
         movieLoadingErrorMessage: res.message,
       });
     }
