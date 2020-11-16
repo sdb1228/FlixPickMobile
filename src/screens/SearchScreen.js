@@ -98,23 +98,26 @@ export default class SearchScreen extends Component {
                 this.setMovieDetailsModalVisible(true, movie);
               }}>
               <View style={styles.imageContainer}>
-                <Image
-                  style={styles.sameLikedMoviesImage}
-                  source={{
-                    uri: movie.image || fallbackImage,
-                  }}
-                />
-                <View>
-                  <Text
-                    style={{
-                      color: 'rgb(185, 185, 185)',
-                      fontSize: 15,
-                      width: 250,
-                    }}>
-                    {entities.decode(movie.title)}
-                  </Text>
+                <View
+                  style={{flex: 4, flexDirection: 'row', alignItems: 'center'}}>
+                  <Image
+                    style={styles.sameLikedMoviesImage}
+                    source={{
+                      uri: movie.image || fallbackImage,
+                    }}
+                  />
+                  <View>
+                    <Text
+                      style={{
+                        color: 'rgb(185, 185, 185)',
+                        fontSize: 15,
+                        width: 250,
+                      }}>
+                      {entities.decode(movie.title)}
+                    </Text>
+                  </View>
                 </View>
-                <View style={{flexDirection: 'row'}}>
+                <View style={{flexDirection: 'row', flex: 1}}>
                   {!movie.reaction && (
                     <>
                       <Icon

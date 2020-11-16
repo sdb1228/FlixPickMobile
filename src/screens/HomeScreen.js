@@ -279,7 +279,6 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 4,
     borderWidth: 2,
-    height: '80%',
     borderColor: '#333333',
     justifyContent: 'center',
     alignItems: 'center',

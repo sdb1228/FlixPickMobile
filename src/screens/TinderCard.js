@@ -1,6 +1,13 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
+import {
+  Dimensions,
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+  Image,
+} from 'react-native';
 const AllHtmlEntities = require('html-entities').AllHtmlEntities; // Synonym for HTML5 entities.
 const entities = new AllHtmlEntities();
 const fallbackImage =
@@ -31,11 +38,13 @@ const TinderCard = ({title, large_image, image, synopsis, rating}) => {
         <Text style={styles.title}>
           {!title ? 'Welcome to Flix Picks!' : entities.decode(title)}
         </Text>
-        <Text numberOfLines={4} style={styles.synopsis}>
-          {!synopsis
-            ? 'The best movie matching out there'
-            : entities.decode(synopsis)}
-        </Text>
+        {!(Dimensions.get('window').height < 800) && (
+          <Text numberOfLines={4} style={styles.synopsis}>
+            {!synopsis
+              ? 'The best movie matching out there'
+              : entities.decode(synopsis)}
+          </Text>
+        )}
       </View>
     </View>
   );

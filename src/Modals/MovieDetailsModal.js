@@ -1,6 +1,14 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {StyleSheet, View, Text, Modal, Image} from 'react-native';
+import {
+  ScrollView,
+  Dimensions,
+  StyleSheet,
+  View,
+  Text,
+  Modal,
+  Image,
+} from 'react-native';
 const AllHtmlEntities = require('html-entities').AllHtmlEntities; // Synonym for HTML5 entities.
 const entities = new AllHtmlEntities();
 const fallbackImage =
@@ -10,40 +18,42 @@ const MovieDetailsModal = ({selectedMovie, modalVisible, setModalVisible}) => (
   <Modal animationType="fade" transparent visible={modalVisible}>
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
-        <View style={{width: '100%', justifyContent: 'flex-start'}}>
-          <Icon
-            onPress={() => {
-              setModalVisible(!modalVisible);
-            }}
-            name="close-outline"
-            size={30}
-            color="white"
-          />
-        </View>
+        <ScrollView>
+          <View style={{width: '100%', justifyContent: 'flex-start'}}>
+            <Icon
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}
+              name="close-outline"
+              size={30}
+              color="white"
+            />
+          </View>
 
-        <Image
-          style={{
-            width: '100%',
-            height: 400,
-            resizeMode: 'contain',
-          }}
-          onError={({nativeEvent: {error}}) => console.log(error)}
-          source={{
-            uri: selectedMovie?.large_image || fallbackImage,
-          }}
-        />
-        <View style={styles.textContainer}>
-          <Text style={styles.modalTitle}>
-            {!selectedMovie?.title
-              ? 'Welcome to Flix Picks!'
-              : entities.decode(selectedMovie?.title)}
-          </Text>
-          <Text numberOfLines={6} style={styles.synopsis}>
-            {!selectedMovie?.synopsis
-              ? 'The bets movie matching out there'
-              : entities.decode(selectedMovie?.synopsis)}
-          </Text>
-        </View>
+          <Image
+            style={{
+              width: '100%',
+              height: 400,
+              resizeMode: 'contain',
+            }}
+            onError={({nativeEvent: {error}}) => console.log(error)}
+            source={{
+              uri: selectedMovie?.large_image || fallbackImage,
+            }}
+          />
+          <View style={styles.textContainer}>
+            <Text style={styles.modalTitle}>
+              {!selectedMovie?.title
+                ? 'Welcome to Flix Picks!'
+                : entities.decode(selectedMovie?.title)}
+            </Text>
+            <Text numberOfLines={6} style={styles.synopsis}>
+              {!selectedMovie?.synopsis
+                ? 'The bets movie matching out there'
+                : entities.decode(selectedMovie?.synopsis)}
+            </Text>
+          </View>
+        </ScrollView>
       </View>
     </View>
   </Modal>
@@ -61,7 +71,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 15,
     width: 350,
-    height: 650,
+    height: Dimensions.get('window').height - 50,
+    overflow: 'scroll',
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
