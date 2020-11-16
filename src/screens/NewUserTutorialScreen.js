@@ -10,14 +10,14 @@ export default class SwiperComponent extends Component {
 
   componentDidMount() {
     this.setState({
-      currentUser: this.props?.route?.params?.data,
+      currentUser: this.props?.route?.params,
     });
   }
 
   componentDidUpdate() {
     if (!this.state.currentUser) {
       this.setState({
-        currentUser: this.props?.route?.params?.data,
+        currentUser: this.props?.route?.params,
       });
     }
   }
