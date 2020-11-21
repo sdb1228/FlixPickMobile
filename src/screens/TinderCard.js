@@ -1,39 +1,93 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useHeaderHeight} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   Dimensions,
   View,
   Text,
   StyleSheet,
-  StatusBar,
+  TouchableOpacity,
   Image,
 } from 'react-native';
+import MovieDetailsModal from '../Modals/MovieDetailsModal';
 const AllHtmlEntities = require('html-entities').AllHtmlEntities; // Synonym for HTML5 entities.
 const entities = new AllHtmlEntities();
 const fallbackImage =
   'https://lh3.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI';
 
 const TinderCard = ({title, large_image, image, synopsis, rating}) => {
+  const [movieDetailsModal, setMovieDetailsModal] = useState({
+    open: false,
+    movieDetails: null,
+  });
+
+  const [imageSize, setImageSize] = useState({height: 1, width: 1});
   const imageUri = large_image || image;
+
+  Image.getSize(imageUri || fallbackImage, (width, height) => {
+    if (imageSize.width === 1) {
+      setImageSize({width, height});
+    }
+  });
+
   return (
-    <View style={styles.card}>
+    <View
+      style={{
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: '#777777',
+        backgroundColor: '#333333',
+        paddingTop: 20,
+        paddingLeft: 30,
+        paddingRight: 30,
+        paddingBottom: 30,
+      }}>
       <Image
-        style={styles.SwipCardImage}
+        style={{
+          width: '100%',
+          height:
+            imageSize.height *
+            (Dimensions.get('window').width / imageSize.width),
+          resizeMode: 'contain',
+        }}
         source={{
           uri: imageUri || fallbackImage,
         }}
       />
-      <View style={styles.textContainer}>
-        <View style={styles.infoContainer}>
-          <Icon
-            onPress={() => this.openControlPanel()}
-            name="star"
-            size={15}
-            color="white"
-          />
-          <Text numberOfLines={1} style={styles.rating}>
-            {rating}
-          </Text>
+      <View style={styles.movieInforContainer}>
+        <View
+          style={{
+            flexDirection: 'row',
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingTop: 10,
+          }}>
+          <View style={styles.infoContainer}>
+            <Icon
+              onPress={() => this.openControlPanel()}
+              name="star"
+              size={15}
+              color="white"
+            />
+            <Text numberOfLines={1} style={styles.rating}>
+              {rating}
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={styles.moreInforContainer}
+            onPress={() =>
+              setMovieDetailsModal({
+                open: true,
+                movieDetails: {title, large_image, image, synopsis, rating},
+              })
+            }>
+            {Dimensions.get('window').height < 800 && (
+              <Text numberOfLines={1} style={styles.moreInfoText}>
+                More Info
+              </Text>
+            )}
+          </TouchableOpacity>
         </View>
         <Text style={styles.title}>
           {!title ? 'Welcome to Flix Picks!' : entities.decode(title)}
@@ -46,6 +100,13 @@ const TinderCard = ({title, large_image, image, synopsis, rating}) => {
           </Text>
         )}
       </View>
+      <MovieDetailsModal
+        selectedMovie={movieDetailsModal.movieDetails}
+        modalVisible={movieDetailsModal.open}
+        setModalVisible={(visible) =>
+          setMovieDetailsModal({open: visible, movieDetails: null})
+        }
+      />
     </View>
   );
 };
@@ -53,16 +114,22 @@ const TinderCard = ({title, large_image, image, synopsis, rating}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
   },
   infoContainer: {
     flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'flex-start',
     alignItems: 'center',
-    height: 20,
-    paddingTop: 5,
-    paddingLeft: 30,
+    flex: 1,
+  },
+  moreInforContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flex: 1,
+  },
+  moreInfoText: {
+    color: '#c00913',
+    fontWeight: 'bold',
+    fontSize: 15,
   },
   rootContainer: {
     backgroundColor: '#333333',
@@ -70,15 +137,8 @@ const styles = StyleSheet.create({
   },
   SwipCardImage: {
     width: '100%',
-    height: 400,
+    flex: 4,
     resizeMode: 'contain',
-  },
-  card: {
-    borderRadius: 4,
-    borderWidth: 2,
-    height: '90%',
-    borderColor: '#777777',
-    backgroundColor: '#333333',
   },
   title: {
     fontWeight: 'bold',
@@ -88,9 +148,9 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     backgroundColor: 'transparent',
   },
-  textContainer: {
+  movieInforContainer: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   synopsis: {
     textAlign: 'center',

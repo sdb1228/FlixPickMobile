@@ -1,8 +1,7 @@
 import React from 'react';
-import {View, SafeAreaView, StyleSheet, StatusBar} from 'react-native';
+import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-deck-swiper';
-import MultiSelect from 'react-native-multiple-select';
 import AnimatedSplash from 'react-native-animated-splash-screen';
 import {getHome, userMovieReaction} from '../api/mocks';
 import TinderCard from './TinderCard';
@@ -150,143 +149,71 @@ export default class HomeScreen extends React.Component {
         backgroundColor={'#141414'}
         logoHeight={150}
         logoWidth={150}>
-        <View style={styles.rootContainer}>
-          <View
-            style={{
-              zIndex: 400,
-              paddingLeft: 20,
-              paddingRight: 20,
-              paddingTop: 20,
-              height: 50,
-              backgroundColor: '#141414',
-              marginBottom: -30,
-            }}>
-            <MultiSelect
-              hideTags
-              items={genres}
-              uniqueKey="id"
-              ref={(component) => {
-                this.multiSelect = component;
-              }}
-              onSelectedItemsChange={this.onSelectedItemsChange}
-              selectedItems={this.state.selectedItems}
-              selectText="Choose Genre"
-              searchInputPlaceholderText="Search Genres..."
-              tagRemoveIconColor="#b9b9b9"
-              tagBorderColor="#b9b9b9"
-              tagTextColor="#b9b9b9"
-              selectedItemTextColor="#b9b9b9"
-              selectedItemIconColor="#b9b9b9"
-              hideDropdown
-              itemTextColor="#000"
-              styleDropdownMenuSubsection={
-                this.state.selectedFriendsError
-                  ? {
-                      borderWidth: 2,
-                      borderColor: 'red',
-                    }
-                  : null
-              }
-              searchInputStyle={{
-                color: 'black',
-                height: 50,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              submitButtonColor="#000"
-              submitButtonText="Done"
-            />
-          </View>
-          <SafeAreaView style={styles.container}>
-            <Swiper
-              overlayLabels={{
-                left: {
-                  element: (
-                    <Icon name="thumbs-down-outline" size={100} color="white" />
-                  ),
-                  title: 'NOPE',
-                  style: {
-                    wrapper: {
-                      backgroundColor: '#ea6564',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      height: 600,
-                    },
+        <View style={{flex: 1}}>
+          <Swiper
+            cardVerticalMargin={0}
+            overlayLabels={{
+              left: {
+                element: (
+                  <Icon name="thumbs-down-outline" size={100} color="white" />
+                ),
+                title: 'NOPE',
+                style: {
+                  wrapper: {
+                    backgroundColor: '#ea6564',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   },
                 },
-                right: {
-                  element: (
-                    <Icon name="thumbs-up-outline" size={100} color="white" />
-                  ),
-                  title: 'LIKE',
-                  style: {
-                    wrapper: {
-                      backgroundColor: '#B1DA96',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      height: 600,
-                    },
+              },
+              right: {
+                element: (
+                  <Icon name="thumbs-up-outline" size={100} color="white" />
+                ),
+                title: 'LIKE',
+                style: {
+                  wrapper: {
+                    backgroundColor: '#B1DA96',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   },
                 },
-              }}
-              animateOverlayLabelsOpacity
-              cards={
-                movies
-                  .filter(this.genreFilter)
-                  .sort(
-                    (a, b) =>
-                      (b.top_ten
-                        ? parseFloat(b.rating) + 2
-                        : parseFloat(b.rating)) -
-                      (a.top_ten
-                        ? parseFloat(a.rating) + 2
-                        : parseFloat(a.rating)),
-                  ) || []
-              }
-              renderCard={(card) => {
-                return <TinderCard {...card} />;
-              }}
-              onSwipedLeft={(cardIndex) => {
-                this.handleUserSwipe(cardIndex, 'Dislike');
-              }}
-              onSwipedRight={(cardIndex) => {
-                this.handleUserSwipe(cardIndex, 'Like');
-              }}
-              onSwipedAll={() => {
-                console.log('onSwipedAll');
-              }}
-              cardIndex={0}
-              backgroundColor={'#141414'}
-              stackSize={3}></Swiper>
-          </SafeAreaView>
+              },
+            }}
+            animateOverlayLabelsOpacity
+            cards={
+              movies
+                .filter(this.genreFilter)
+                .sort(
+                  (a, b) =>
+                    (b.top_ten
+                      ? parseFloat(b.rating) + 2
+                      : parseFloat(b.rating)) -
+                    (a.top_ten
+                      ? parseFloat(a.rating) + 2
+                      : parseFloat(a.rating)),
+                ) || []
+            }
+            renderCard={(card) => {
+              return <TinderCard {...card} />;
+            }}
+            onSwipedLeft={(cardIndex) => {
+              this.handleUserSwipe(cardIndex, 'Dislike');
+            }}
+            onSwipedRight={(cardIndex) => {
+              this.handleUserSwipe(cardIndex, 'Like');
+            }}
+            onSwipedAll={() => {
+              console.log('onSwipedAll');
+            }}
+            cardIndex={0}
+            backgroundColor="#141414"
+            stackSize={3}
+          />
         </View>
       </AnimatedSplash>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-  rootContainer: {
-    backgroundColor: '#333333',
-    flex: 1,
-  },
-  card: {
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: '#333333',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#333333',
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 50,
-    backgroundColor: 'transparent',
-  },
-});

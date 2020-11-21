@@ -128,6 +128,7 @@ class AddGroupModal extends Component {
                   this.multiSelect = component;
                 }}
                 onSelectedItemsChange={this.onSelectedItemsChange}
+                fixedHeight
                 selectedItems={selectedItems}
                 selectText="Choose Friends"
                 searchInputPlaceholderText="Search Friends..."
