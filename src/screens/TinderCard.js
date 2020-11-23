@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {useHeaderHeight} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   Dimensions,
@@ -40,7 +39,7 @@ const TinderCard = ({title, large_image, image, synopsis, rating}) => {
         paddingTop: 20,
         paddingLeft: 30,
         paddingRight: 30,
-        paddingBottom: 30,
+        paddingBottom: Dimensions.get('window').height < 800 ? 0 : 30,
       }}>
       <Image
         style={{
@@ -145,7 +144,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 25,
-    paddingTop: 5,
+    paddingTop: Dimensions.get('window').height < 800 ? 0 : 5,
+    paddingBottom: Dimensions.get('window').height < 800 ? 5 : 0,
     backgroundColor: 'transparent',
   },
   movieInforContainer: {

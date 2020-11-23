@@ -120,6 +120,9 @@ class MyStack extends React.Component {
   };
 
   onHamburgerMenuItemClick = (item) => {
+    if (!this.state.currentUser) {
+      return;
+    }
     switch (item) {
       case 'Logout':
         this.logOut();

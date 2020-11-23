@@ -1,9 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-deck-swiper';
 import AnimatedSplash from 'react-native-animated-splash-screen';
 import {getHome, userMovieReaction} from '../api/mocks';
+import GenreSelectionModal from '../Modals/GenreSelectionModal';
 import TinderCard from './TinderCard';
 
 const genres = [
@@ -60,6 +61,7 @@ export default class HomeScreen extends React.Component {
     movieLoadingErrorMessage: '',
     currentUser: 0,
     isLoaded: false,
+    genreModalVisible: false,
   };
 
   loadMovies = () => {
@@ -121,6 +123,9 @@ export default class HomeScreen extends React.Component {
     this.setState({selectedItems});
   };
 
+  setGenreModalVisible = (visible) =>
+    this.setState({genreModalVisible: visible});
+
   genreFilter = (value) => {
     if (!value.genre) {
       return false;
@@ -142,78 +147,113 @@ export default class HomeScreen extends React.Component {
     const {movies} = this.state;
 
     return (
-      <AnimatedSplash
-        translucent={true}
-        isLoaded={this.state.isLoaded}
-        logoImage={require('../assets/logo.png')}
-        backgroundColor={'#141414'}
-        logoHeight={150}
-        logoWidth={150}>
-        <View style={{flex: 1}}>
-          <Swiper
-            cardVerticalMargin={0}
-            overlayLabels={{
-              left: {
-                element: (
-                  <Icon name="thumbs-down-outline" size={100} color="white" />
-                ),
-                title: 'NOPE',
-                style: {
-                  wrapper: {
-                    backgroundColor: '#ea6564',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+      <View style={{flex: 1, backgroundColor: '#141414'}}>
+        <AnimatedSplash
+          translucent={true}
+          isLoaded={this.state.isLoaded}
+          logoImage={require('../assets/logo.png')}
+          backgroundColor={'#141414'}
+          logoHeight={150}
+          logoWidth={150}>
+          <View style={{backgroundColor: '#141414', marginBottom: 10}}>
+            <TouchableOpacity
+              style={styles.genreButton}
+              onPress={() => this.setState({genreModalVisible: true})}>
+              <Text numberOfLines={1} style={styles.genreText}>
+                Genre
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 1, backgroundColor: '#141414'}}>
+            <Swiper
+              cardVerticalMargin={0}
+              overlayLabels={{
+                left: {
+                  element: (
+                    <Icon name="thumbs-down-outline" size={100} color="white" />
+                  ),
+                  title: 'NOPE',
+                  style: {
+                    wrapper: {
+                      backgroundColor: '#ea6564',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    },
                   },
                 },
-              },
-              right: {
-                element: (
-                  <Icon name="thumbs-up-outline" size={100} color="white" />
-                ),
-                title: 'LIKE',
-                style: {
-                  wrapper: {
-                    backgroundColor: '#B1DA96',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                right: {
+                  element: (
+                    <Icon name="thumbs-up-outline" size={100} color="white" />
+                  ),
+                  title: 'LIKE',
+                  style: {
+                    wrapper: {
+                      backgroundColor: '#B1DA96',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    },
                   },
                 },
-              },
-            }}
-            animateOverlayLabelsOpacity
-            cards={
-              movies
-                .filter(this.genreFilter)
-                .sort(
-                  (a, b) =>
-                    (b.top_ten
-                      ? parseFloat(b.rating) + 2
-                      : parseFloat(b.rating)) -
-                    (a.top_ten
-                      ? parseFloat(a.rating) + 2
-                      : parseFloat(a.rating)),
-                ) || []
-            }
-            renderCard={(card) => {
-              return <TinderCard {...card} />;
-            }}
-            onSwipedLeft={(cardIndex) => {
-              this.handleUserSwipe(cardIndex, 'Dislike');
-            }}
-            onSwipedRight={(cardIndex) => {
-              this.handleUserSwipe(cardIndex, 'Like');
-            }}
-            onSwipedAll={() => {
-              console.log('onSwipedAll');
-            }}
-            cardIndex={0}
-            backgroundColor="#141414"
-            stackSize={3}
+              }}
+              animateOverlayLabelsOpacity
+              cards={
+                movies
+                  .filter(this.genreFilter)
+                  .sort(
+                    (a, b) =>
+                      (b.top_ten
+                        ? parseFloat(b.rating) + 2
+                        : parseFloat(b.rating)) -
+                      (a.top_ten
+                        ? parseFloat(a.rating) + 2
+                        : parseFloat(a.rating)),
+                  ) || []
+              }
+              renderCard={(card) => {
+                return <TinderCard {...card} />;
+              }}
+              onSwipedLeft={(cardIndex) => {
+                this.handleUserSwipe(cardIndex, 'Dislike');
+              }}
+              onSwipedRight={(cardIndex) => {
+                this.handleUserSwipe(cardIndex, 'Like');
+              }}
+              onSwipedAll={() => {
+                console.log('onSwipedAll');
+              }}
+              cardIndex={0}
+              backgroundColor="#141414"
+              stackSize={3}
+            />
+          </View>
+          <GenreSelectionModal
+            modalVisible={this.state.genreModalVisible}
+            setModalVisible={this.setGenreModalVisible}
           />
-        </View>
-      </AnimatedSplash>
+        </AnimatedSplash>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  genreButton: {
+    textAlign: 'center',
+    color: '#ccc',
+    fontSize: 15,
+    padding: 5,
+    width: 120,
+    marginLeft: 20,
+    backgroundColor: '#141414',
+    borderWidth: 1,
+    borderColor: 'white',
+  },
+  genreText: {
+    textAlign: 'center',
+    fontSize: 15,
+    paddingLeft: 5,
+    color: 'white',
+  },
+});
