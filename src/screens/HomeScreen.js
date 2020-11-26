@@ -70,7 +70,7 @@ export default class HomeScreen extends React.Component {
       loadingMovies: true,
       currentUser: this.props?.route?.params?.data?.email,
     });
-    getHome(300)
+    getHome(15)
       .then((res) => {
         this.setState({
           isLoaded: true,
@@ -80,9 +80,9 @@ export default class HomeScreen extends React.Component {
           loadingMovies: false,
         });
         getHome(0).then((res) => {
-          this.setState({
-            movies: res.data,
-          });
+          this.setState((prevState) => ({
+            movies: prevState.movies.concat(res.data),
+          }));
         });
       })
       .catch(this.handleUserLoadingError);

@@ -39,11 +39,15 @@ const TinderCard = ({title, large_image, image, synopsis, rating}) => {
         paddingTop: 20,
         paddingLeft: 30,
         paddingRight: 30,
+        height:
+          Dimensions.get('window').height -
+          (Dimensions.get('window').height < 800 ? 152 : 200),
         paddingBottom: Dimensions.get('window').height < 800 ? 0 : 30,
       }}>
       <Image
         style={{
           width: '100%',
+          maxHeight: Dimensions.get('window').height < 800 ? 300 : 400,
           height:
             imageSize.height *
             (Dimensions.get('window').width / imageSize.width),
@@ -133,11 +137,6 @@ const styles = StyleSheet.create({
   rootContainer: {
     backgroundColor: '#333333',
     flex: 1,
-  },
-  SwipCardImage: {
-    width: '100%',
-    flex: 4,
-    resizeMode: 'contain',
   },
   title: {
     fontWeight: 'bold',
