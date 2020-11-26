@@ -57,7 +57,7 @@ export default class HomeScreen extends React.Component {
 
   state = {
     movies: [],
-    selectedItems: [],
+    selectedGenres: genres.map((g) => g.name),
     movieLoadingErrorMessage: '',
     currentUser: 0,
     isLoaded: false,
@@ -119,8 +119,22 @@ export default class HomeScreen extends React.Component {
     userMovieReaction(movie.id, reaction);
   };
 
-  onSelectedItemsChange = (selectedItems) => {
-    this.setState({selectedItems});
+  setSelectedGenere = (genre, value) => {
+    if (genre === 'All') {
+      if (!value) {
+        this.setState({selectedGenres: []});
+      } else {
+        this.setState({selectedGenres: genres.map((g) => g.name)});
+      }
+    } else {
+      this.setState((prevState) => {
+        return {
+          selectedGenres: prevState.selectedGenres.includes(genre.name)
+            ? prevState.selectedGenres.filter((g) => g !== genre.name)
+            : prevState.selectedGenres.concat(genre.name),
+        };
+      });
+    }
   };
 
   setGenreModalVisible = (visible) =>
@@ -130,13 +144,11 @@ export default class HomeScreen extends React.Component {
     if (!value.genre) {
       return false;
     }
-    if (this.state.selectedItems.length === 0) {
+    if (this.state.selectedGenres.length === 0) {
       return true;
     }
-    for (var i = 0; i < this.state.selectedItems.length; i++) {
-      if (
-        value.genre.includes(genres[parseInt(this.state.selectedItems[i])].name)
-      ) {
+    for (let i = 0; i < this.state.selectedGenres.length; i++) {
+      if (value.genre.includes(this.state.selectedGenres[i])) {
         return true;
       }
     }
@@ -160,7 +172,10 @@ export default class HomeScreen extends React.Component {
               style={styles.genreButton}
               onPress={() => this.setState({genreModalVisible: true})}>
               <Text numberOfLines={1} style={styles.genreText}>
-                Genre
+                {this.state.selectedGenres.length === 0 ||
+                this.state.selectedGenres.length === genres.length
+                  ? `All Genres Selected`
+                  : `${this.state.selectedGenres.length} Genres selected`}
               </Text>
             </TouchableOpacity>
           </View>
@@ -231,6 +246,9 @@ export default class HomeScreen extends React.Component {
           <GenreSelectionModal
             modalVisible={this.state.genreModalVisible}
             setModalVisible={this.setGenreModalVisible}
+            genres={genres}
+            selectedGenres={this.state.selectedGenres}
+            setSelectedGenere={this.setSelectedGenere}
           />
         </AnimatedSplash>
       </View>
@@ -244,7 +262,7 @@ const styles = StyleSheet.create({
     color: '#ccc',
     fontSize: 15,
     padding: 5,
-    width: 120,
+    width: 160,
     marginLeft: 20,
     backgroundColor: '#141414',
     borderWidth: 1,

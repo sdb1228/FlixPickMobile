@@ -10,11 +10,12 @@ import {
   Modal,
   TouchableOpacity,
 } from 'react-native';
-import MultiSelect from 'react-native-multiple-select';
+import FriendsListModal from './FriendsListModal';
 import {createGroup} from '../../src/api/mocks';
 
 class AddGroupModal extends Component {
   state = {
+    friendListModalVisible: false,
     selectedItems: [],
     groupName: '',
     groupNameError: null,
@@ -24,6 +25,19 @@ class AddGroupModal extends Component {
 
   onSelectedItemsChange = (selectedItems) => {
     this.setState({selectedItems, selectedFriendsError: null});
+  };
+
+  setGenreModalVisible = (visible) =>
+    this.setState({friendListModalVisible: visible});
+
+  setSelectedFriend = (friend, value) => {
+    this.setState((prevState) => {
+      return {
+        selectedItems: prevState.selectedItems.includes(friend.id)
+          ? prevState.selectedItems.filter((g) => g !== friend.id)
+          : prevState.selectedItems.concat(friend.id),
+      };
+    });
   };
 
   createGroup = () => {
@@ -85,7 +99,6 @@ class AddGroupModal extends Component {
   };
 
   render() {
-    const {selectedItems} = this.state;
     return (
       <Modal animationType="fade" transparent visible={this.props.modalVisible}>
         <Spinner
@@ -120,43 +133,15 @@ class AddGroupModal extends Component {
               placeholderTextColor="grey"
             />
             <View style={{width: '100%'}}>
-              <MultiSelect
-                hideTags
-                items={this.props.friends}
-                uniqueKey="id"
-                ref={(component) => {
-                  this.multiSelect = component;
-                }}
-                onSelectedItemsChange={this.onSelectedItemsChange}
-                fixedHeight
-                selectedItems={selectedItems}
-                selectText="Choose Friends"
-                searchInputPlaceholderText="Search Friends..."
-                tagRemoveIconColor="#b9b9b9"
-                tagBorderColor="#b9b9b9"
-                tagTextColor="#b9b9b9"
-                selectedItemTextColor="#b9b9b9"
-                selectedItemIconColor="#b9b9b9"
-                hideDropdown
-                itemTextColor="#000"
-                styleDropdownMenuSubsection={
-                  this.state.selectedFriendsError
-                    ? {
-                        borderWidth: 2,
-                        borderColor: 'red',
-                      }
-                    : null
-                }
-                searchInputStyle={{
-                  color: 'black',
-                  height: 50,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                submitButtonColor="#000"
-                submitButtonText="Done"
-              />
-              {this.multiSelect?.getSelectedItemsExt(selectedItems)}
+              <TouchableOpacity
+                style={styles.friendButton}
+                onPress={() => this.setState({friendListModalVisible: true})}>
+                <Text numberOfLines={1} style={styles.friendText}>
+                  {this.state.selectedItems.length === 0
+                    ? `Select Friends`
+                    : `${this.state.selectedItems.length} friends selected`}
+                </Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
                   this.createGroup();
@@ -182,6 +167,13 @@ class AddGroupModal extends Component {
             </View>
           </View>
         </View>
+        <FriendsListModal
+          modalVisible={this.state.friendListModalVisible}
+          setModalVisible={this.setGenreModalVisible}
+          friends={this.props.friends}
+          selectedFriends={this.state.selectedItems}
+          setSelectedFriend={this.setSelectedFriend}
+        />
       </Modal>
     );
   }
@@ -208,7 +200,7 @@ const styles = StyleSheet.create({
     marginTop: 85,
     padding: 15,
     width: 350,
-    minHeight: 450,
+    minHeight: 250,
     alignItems: 'flex-start',
     shadowColor: '#000',
     shadowOffset: {
@@ -218,6 +210,22 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+  friendButton: {
+    textAlign: 'center',
+    color: 'transparent',
+    fontSize: 15,
+    padding: 5,
+    width: 160,
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: 'white',
+  },
+  friendText: {
+    textAlign: 'center',
+    fontSize: 15,
+    paddingLeft: 5,
+    color: 'white',
   },
   textContainer: {
     alignItems: 'center',

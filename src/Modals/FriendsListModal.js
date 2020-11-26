@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useHeaderHeight} from '@react-navigation/stack';
 import CheckBox from '@react-native-community/checkbox';
@@ -13,12 +12,12 @@ import {
   Modal,
 } from 'react-native';
 
-const GenreSelectionModal = ({
-  genres,
-  selectedGenres,
+const FriendsListModal = ({
+  friends,
+  selectedFriends,
   modalVisible,
   setModalVisible,
-  setSelectedGenere,
+  setSelectedFriend,
 }) => {
   const headerHeight = useHeaderHeight();
   return (
@@ -69,35 +68,10 @@ const GenreSelectionModal = ({
           </View>
 
           <ScrollView style={{width: '100%'}}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                width: '100%',
-              }}>
-              <CheckBox
-                value={_.isEqual(
-                  genres.map((genre) => genre.name).sort(),
-                  selectedGenres.sort(),
-                )}
-                onValueChange={(newValue) => setSelectedGenere('All', newValue)}
-                lineWidth={1}
-                hideBox={false}
-                boxType={'square'}
-                tintColor={'white'}
-                onCheckColor={'white'}
-                onFillColor={'#4DABEC'}
-                onTintColor={'#F4DCF8'}
-                animationDuration={0}
-                disabled={false}
-              />
-              <Text style={styles.checkboxText}>Select All</Text>
-            </View>
             <View style={{paddingLeft: 20, paddingTop: 5}}>
-              {genres.map((genre) => (
+              {friends.map((friend) => (
                 <View
-                  key={genre.id}
+                  key={friend.id}
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
@@ -106,10 +80,10 @@ const GenreSelectionModal = ({
                     paddingTop: 10,
                   }}>
                   <CheckBox
-                    key={genre.id}
-                    value={selectedGenres.includes(genre.name)}
+                    key={friend.id}
+                    value={selectedFriends.includes(friend.id)}
                     onValueChange={(newValue) => {
-                      setSelectedGenere(genre, newValue);
+                      setSelectedFriend(friend, newValue);
                     }}
                     lineWidth={1}
                     hideBox={false}
@@ -121,7 +95,7 @@ const GenreSelectionModal = ({
                     animationDuration={0}
                     disabled={false}
                   />
-                  <Text style={styles.checkboxText}>{genre.name}</Text>
+                  <Text style={styles.checkboxText}>{friend.name}</Text>
                 </View>
               ))}
             </View>
@@ -165,4 +139,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GenreSelectionModal;
+export default FriendsListModal;
